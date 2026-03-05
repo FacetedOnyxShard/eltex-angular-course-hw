@@ -1,0 +1,53 @@
+:root {
+  --text-xxl: 24px;
+  --text-xl: 16px;
+  --text-lg: 14px;
+  --text-base: 12px;
+  --text-sm: 10px;
+
+  --font-thin: 100;
+  --font-extra-light: 200;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+  --font-extra-bold: 800;
+  --font-black: 900;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: var(--font-regular);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-medium);
+}
+
+h2 {
+  font-size: var(--text-xxl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+h4 {
+  font-size: var(--text-lg);
+}
+
+p {
+  font-size: var(--text-base);
+}
+
+li {
+  font-size: var(--text-base);
+}
