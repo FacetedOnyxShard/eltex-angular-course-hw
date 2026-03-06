@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main page</title>
+    <title>Главная</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,13 +40,13 @@
 
       <img
         src="./assets/mountains_and_flowers.png"
-        alt="mountains_and_flowers"
+        alt="Горный пейзаж с цветущим лугом на переднем плане"
       />
 
       <section>
         <h2>Моя карьера</h2>
-        <h4>Текущая должность</h4>
 
+        <h3>Текущая должность</h3>
         <p>
           Старший веб-разработчик, ООО "DigitalStudio" (2022 — по настоящее
           время) Руководство командой из 4 разработчиков, разработка архитектуры
@@ -54,11 +54,10 @@
           в рабочий процесс.
         </p>
 
-        <h4>Опыт работы:</h4>
-
+        <h3>Опыт работы:</h3>
         <article>
-          <h5>Веб-разработчик, ООО "CreativeAgency" (2019 — 2022)</h5>
-          <p>
+          <h4>Веб-разработчик, ООО "CreativeAgency" (2019 — 2022)</h4>
+          <p class="experience-text">
             Создание корпоративных сайтов и веб-приложений на React и Vue.js,
             оптимизация производительности, работа с клиентами и сбор
             требований.
@@ -66,15 +65,15 @@
         </article>
 
         <article>
-          <h5>Фронтенд-разработчик, Стартап "TechVenture" (2018 — 2019)</h5>
-          <p>
+          <h4>Фронтенд-разработчик, Стартап "TechVenture" (2018 — 2019)</h4>
+          <p class="experience-text">
             Разработка пользовательского интерфейса для платформы e-learning,
             работа с REST API и веб-стандартами.
           </p>
         </article>
 
         <article>
-          <h5>Интернет-стажёр, Веб-студия "WebMasters" (2017 — 2018)</h5>
+          <h4>Интернет-стажёр, Веб-студия "WebMasters" (2017 — 2018)</h4>
           <p>
             Первый опыт в профессиональной разработке, участие в создании и
             поддержке различных проектов.
@@ -83,9 +82,9 @@
       </section>
 
       <section>
-        <h4>Образование:</h4>
+        <h3>Образование:</h3>
         <article>
-          <h5>Государственный Технический Университет, 2013 — 2017</h5>
+          <h4>Государственный Технический Университет, 2013 — 2017</h4>
           <p>
             Бакалавриат по специальности "Информатика и вычислительная техника"
             Выпускная работа: "Оптимизация загрузки веб-страниц на мобильных
@@ -93,14 +92,17 @@
           </p>
         </article>
 
-        <h4>Курсы и сертификации:</h4>
+        <h3>Курсы и сертификации:</h3>
         <ul>
           <li>Advanced React Development — Coursera (2023)</li>
           <li>UX/UI Design Fundamentals — Skillbox (2021)</li>
           <li>Web Performance Optimization — Frontend Masters (2022)</li>
           <li>Google Analytics Certification (2020)</li>
         </ul>
-        <h4>Навыки:</h4>
+      </section>
+
+      <section>
+        <h3>Навыки:</h3>
         <ul>
           <li>
             Программирование: JavaScript, TypeScript, React, Vue.js, HTML5,
@@ -110,7 +112,7 @@
           <li>Методологии: Agile, Scrum, Test-Driven Development</li>
         </ul>
 
-        <h4>Достижения:</h4>
+        <h3>Достижения:</h3>
         <ul>
           <li>
             Разработал платформу для управления проектами, которой пользуются
@@ -136,7 +138,7 @@
 
         <article>
           <header>
-            <h4>Как создать адаптивный дизайн за 30 минут</h4>
+            <h3>Как создать адаптивный дизайн за 30 минут</h3>
             <time datetime="2024-12-15">Опубликовано: 15 декабря 2024</time>
           </header>
           <p>
@@ -149,7 +151,7 @@
 
         <article>
           <header>
-            <h4>Как создать адаптивный дизайн за 30 минут</h4>
+            <h3>Как создать адаптивный дизайн за 30 минут</h3>
             <time datetime="2024-12-15">Опубликовано: 15 декабря 2024</time>
           </header>
           <p>
@@ -162,7 +164,7 @@
 
         <article>
           <header>
-            <h4>Как создать адаптивный дизайн за 30 минут</h4>
+            <h3>Как создать адаптивный дизайн за 30 минут</h3>
             <time datetime="2024-12-15">Опубликовано: 15 декабря 2024</time>
           </header>
           <p>
@@ -173,37 +175,50 @@
           </p>
         </article>
 
-        <button>Посмотреть все статьи</button>
+        <a href="./blog.html" class="button">Посмотреть все статьи</a>
       </section>
     </main>
 
     <footer class="footer">
-      <address>
+      <section>
         <h2>Контакты</h2>
+        <address>
+          <ul class="">
+            <li>
+              <span>Email: </span>
+              <a href="mailto:alex@creativeblog.ru" id="mail" class="mail-view"
+                >alex@creativeblog.ru</a
+              >
+            </li>
+            <li>
+              <span>Телефон: </span>
+              <a href="tel:+79991234567" id="phone">+7 (999) 123-45-67</a>
+            </li>
+          </ul>
+        </address>
+      </section>
 
-        <ul class="">
-          <li>
-            <label for="mail">Email:</label>
-            <a href="mailto:alex@creativeblog.ru" id="mail" class="mail-view"
-              >alex@creativeblog.ru</a
-            >
-          </li>
-          <li>
-            <label for="phone">Телефон:</label>
-            <a href="tel:+79991234567" id="phone">+7 (999) 123-45-67</a>
-          </li>
-        </ul>
-
+      <section>
         <h3>Социальные сети:</h3>
         <nav aria-label="Социальные сети">
           <ul class="flex fd-row">
-            <li><a href="#" target="_blank">Instagram</a></li>
-            <li><a href="#" target="_blank">Twitter</a></li>
-            <li><a href="#" target="_blank">LinkedIn</a></li>
-            <li><a href="#" target="_blank">GitHub</a></li>
+            <li>
+              <a href="#" target="_blank" rel="noopener noreferrer"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+            </li>
+            <li>
+              <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
+            <li>
+              <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </li>
           </ul>
         </nav>
-      </address>
+      </section>
     </footer>
   </body>
 </html>
