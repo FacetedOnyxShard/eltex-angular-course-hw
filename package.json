@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "sass": "sass --load-path=node_modules src/styles:dist/ --style expanded",
+    "sass:watch": "sass --load-path=node_modules --watch src/styles/:dist/ --style expanded"
+  },
+  "devDependencies": {
+    "sass": "^1.98.0"
+  },
+  "dependencies": {
+    "@a1rth/css-normalize": "^1.2.4"
+  }
+}

@@ -5,42 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Главная</title>
 
-    <link
-      rel="shortcut icon"
-      href="./assets/icons/favicon.ico"
-      type="image/x-icon"
-    />
-    <link rel="preconnect" href="./styles/font.css" />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="/dist/font.css" />
+    <link rel="stylesheet" href="/dist/main.css" />
   </head>
 
   <body class="page">
-    <header>
+    <header class="header flex">
+      <a
+        href="/public/index.html"
+        aria-current="page"
+        class="header__company-sign"
+        >Name-folio</a
+      >
       <nav aria-label="Основная навигация">
-        <ul>
-          <li><a href="index.html" aria-current="page">Главная</a></li>
-          <li><a href="blog.html">Блог</a></li>
+        <ul class="header__content">
+          <li>
+            <a href="blog.html" class="header__element" data-text="About me"
+              >About me</a
+            >
+          </li>
+          <li>
+            <a href="blog.html" class="header__element" data-text="Blog"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a href="blog.html" class="header__element" data-text="Contact"
+              >Contact</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
 
     <main class="main-content">
-      <section>
-        <h2>Обо мне</h2>
+      <section class="about-me">
+        <div>
+          <h2>Hello! I’m Nelsom, a photographer</h2>
 
-        <p>
-          Добро пожаловать! Я веб-разработчик с 5-летним опытом в создании
-          интерактивных интерфейсов. На этом блоге я делюсь своими знаниями,
-          проектами и идеями о том, как технология меняет способ общения людей.
-          Здесь вы найдёте туториалы, кейсы из реальной практики и вдохновляющие
-          истории.
-        </p>
+          <p class="about-me__text">
+            Occaecat elit pariatur non Lorem laborum proident Lorem non sint
+            nostrud. Et dolore incididunt mollit nostrud Lorem dolore. Qui
+            aliquip aute amet eu adipisicing velit ullamco nulla sint enim do
+            quis aute
+          </p>
+
+          <a href="#" class="about-me__link">More about me</a>
+        </div>
+
+        <div>
+          <img
+            src="./assets/images/mountains_and_flowers.png"
+            alt="Горный пейзаж с цветущим лугом на переднем плане"
+            class="about-me__main-image"
+          />
+
+          <img
+            src="./assets/images/text-circle-design-element.png"
+            alt="Круговая надпись my blogs со стрелкой вниз (декоративный элемент)"
+            class="about-me__design-element"
+          />
+        </div>
       </section>
-
-      <img
-        src="./assets/mountains_and_flowers.png"
-        alt="Горный пейзаж с цветущим лугом на переднем плане"
-      />
 
       <section>
         <h2>Моя карьера</h2>

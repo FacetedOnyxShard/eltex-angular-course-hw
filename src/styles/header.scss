@@ -1,0 +1,50 @@
+@use "vars";
+
+:root {
+  --header-padding: 10px;
+}
+
+.header {
+  margin-top: calc(33px - var(--header-padding));
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-bright-bg);
+  padding: var(--header-padding) 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__company-sign {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-medium);
+}
+
+.header__content {
+  display: flex;
+  gap: 22px;
+}
+
+.header__element {
+  font-size: var(--text-base);
+  color: var(--color-gray-on-bright);
+  position: relative;
+}
+
+/* .header__element::before {
+  content: attr(data-text);
+  font-weight: var(--font-bold);
+  visibility: hidden;
+  display: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  user-select: none;
+} */
+
+.header__element:hover {
+  font-weight: var(--font-bold);
+  color: var(--color-green-dark);
+}
