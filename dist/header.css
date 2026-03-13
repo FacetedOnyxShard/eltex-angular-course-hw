@@ -1,4 +1,39 @@
-@use "vars";
+/* Font */
+:root {
+  --text-5xl: 52px;
+  --text-4xl: 32px;
+  --text-3xl: 30px;
+  --text-2xl: 24px;
+  --text-xl: 20px;
+  --text-lg: 18px;
+  --text-base: 16px;
+  --text-sm: 10px;
+  --font-thin: 100;
+  --font-extra-light: 200;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+  --font-extra-bold: 800;
+  --font-black: 900;
+}
+
+/* Color */
+:root {
+  --color-bright-bg: #ffffff;
+  --color-black-on-bright: #1a1b20;
+  --color-dark-on-bright: #323747;
+  --color-gray-on-bright: #68686a;
+  --color-gray-bright: #bdc1ca;
+  --color-green-dark: #61c15c;
+  --color-green-bright: #f4fbf4;
+  --color-orange-dark: #db5e31;
+  --color-orange-bright: #fef3ef;
+  --color-dark-bg: #1e2128;
+  --color-white-on-dark: #fdfeff;
+  --color-placeholder-on-dark: #a3a6ad;
+}
 
 :root {
   --header-padding: 10px;
@@ -11,7 +46,6 @@
   z-index: 1000;
   background-color: var(--color-bright-bg);
   padding: var(--header-padding) 0;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,8 +77,9 @@
   pointer-events: none;
   user-select: none;
 } */
-
 .header__element:hover {
   font-weight: var(--font-bold);
   color: var(--color-green-dark);
 }
+
+/*# sourceMappingURL=header.css.map */
