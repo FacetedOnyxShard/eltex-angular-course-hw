@@ -9,6 +9,7 @@
   border-radius: 5px;
 
   color: var(--color-green-dark);
+  justify-content: center;
 }
 
 .recently-posts {

@@ -1,6 +1,7 @@
 .footer-container {
   padding: 55px 130px;
   background-color: var(--color-dark-bg);
+  margin-top: 65px;
 }
 
 .footer {

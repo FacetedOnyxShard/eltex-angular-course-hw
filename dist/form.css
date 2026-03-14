@@ -34,3 +34,7 @@
   width: 175px;
   height: 50px;
 }
+
+.form__input--tall {
+  height: 123px;
+}

@@ -10,6 +10,7 @@
 @import url("./hobby.css");
 @import url("./footer.css");
 @import url("./form.css");
+@import url("./blog.css");
 
 * {
   box-sizing: border-box;
@@ -80,6 +81,7 @@ time {
 
 .main-content {
   padding: 0 130px;
+  padding-top: 50px;
 }
 
 .experience-text {

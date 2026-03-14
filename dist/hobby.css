@@ -46,6 +46,7 @@
 
   background-color: var(--color-dark-text-base);
   color: var(--color-bright-bg);
+
   opacity: 0;
 }
 

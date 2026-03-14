@@ -31,3 +31,5 @@ yarn-error.log*
 /src/styles/
 /venv/
 *.txt
+
+.vscode
