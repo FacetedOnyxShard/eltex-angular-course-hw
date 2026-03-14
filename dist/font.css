@@ -5,6 +5,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Inter";
   src: url("Inter-Italic.woff2") format("woff2");
@@ -12,4 +13,3 @@
   font-style: italic;
   font-display: swap;
 }
-

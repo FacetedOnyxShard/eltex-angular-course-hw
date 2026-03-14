@@ -29,54 +29,52 @@
 
         <section class="posts-section">
           <article class="card card--big">
-          <img
-            src="/src/assets/images/empty-picture.png"
-            alt=""
-            class="card__image"
-          />
+            <img
+              src="/src/assets/images/empty-picture.png"
+              alt=""
+              class="card__image"
+            />
 
-          <div class="card__text .card__text--big">
-            <header>
-              <h3>Как создать адаптивный дизайн за 30 минут</h3>
-            </header>
-            <p>
-              В этой статье я расскажу о ключевых принципах создания мобильных
-              интерфейсов, которые одинаково хорошо выглядят на всех
-              устройствах. Вы узнаете о медиа-запросах, гибких сетках и
-              практических примерах кода, которые можно использовать прямо
-              сейчас.
-            </p>
-            <time datetime="2024-12-15">Опубликовано: 15 декабря 2024</time>
+            <div class="card__text .card__text--big">
+              <header>
+                <h3>Как создать адаптивный дизайн за 30 минут</h3>
+              </header>
+              <p>
+                В этой статье я расскажу о ключевых принципах создания мобильных
+                интерфейсов, которые одинаково хорошо выглядят на всех
+                устройствах. Вы узнаете о медиа-запросах, гибких сетках и
+                практических примерах кода, которые можно использовать прямо
+                сейчас.
+              </p>
+              <time datetime="2024-12-15">Опубликовано: 15 декабря 2024</time>
+            </div>
+          </article>
+
+          <div id="small-cards-placeholder" class="blog__small-cards-container">
+            <template id="small-card-template">
+              <article class="card card--small">
+                <img
+                  src="/src/assets/images/empty-picture.png"
+                  alt=""
+                  class="card__image"
+                />
+
+                <div class="card__text">
+                  <p>Minim anim pariatur magna duis sit et dolor incididunt</p>
+                  <time datetime="2024-12-15"
+                    >Опубликовано: 15 декабря 2024</time
+                  >
+                </div>
+              </article>
+            </template>
           </div>
-        </article>
 
-
-        <div id="small-cards-placeholder" class="blog__small-cards-container">
-          <template id="small-card-template">
-            <article class="card card--small">
-              <img
-                src="/src/assets/images/empty-picture.png"
-                alt=""
-                class="card__image"
-              />
-    
-              <div class="card__text">
-                <p>
-                  Minim anim pariatur magna duis sit et dolor incididunt
-                </p>
-                <time datetime="2024-12-15">Опубликовано: 15 декабря 2024</time>
-              </div>
-            </article>
-          </template>
-
-        </div>
-
-        <div class="button-container">
-          <button class="blog__next-button">Next</button>
-        </div>
-
+          <div class="button-container">
+            <button class="blog__next-button">Next</button>
+          </div>
         </section>
-      </main>
+      </section>
+    </main>
 
     <div class="footer-container" id="footer-placeholder"></div>
 

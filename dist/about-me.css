@@ -33,7 +33,7 @@
 .about-me__link {
   color: var(--color-green-dark);
 
-  display: flex;  
+  display: flex;
   align-items: center;
 
   gap: 12px;

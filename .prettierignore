@@ -1,4 +1,5 @@
-node_modules/
-venv/
-src/assets/
-src/styles/
+node_modules
+venv
+.git
+*.log
+package-lock.json

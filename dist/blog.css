@@ -19,7 +19,7 @@
 .card--big {
   flex-direction: row;
   gap: 50px;
-  
+
   background-color: #fafafa;
   border-radius: 8px;
 }
