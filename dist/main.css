@@ -7,6 +7,7 @@
 @import url("./skills.css");
 @import url("./job-experience.css");
 @import url("./timeline.css");
+@import url("./hobby.css");
 
 * {
   box-sizing: border-box;
