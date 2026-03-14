@@ -8,6 +8,8 @@
 @import url("./job-experience.css");
 @import url("./timeline.css");
 @import url("./hobby.css");
+@import url("./footer.css");
+@import url("./form.css");
 
 * {
   box-sizing: border-box;
@@ -76,8 +78,7 @@ time {
   gap: 100px;
 }
 
-.main-content,
-.footer {
+.main-content {
   padding: 0 130px;
 }
 

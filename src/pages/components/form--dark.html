@@ -1,0 +1,34 @@
+<section class="">
+  <form
+    action="#"
+    method="post"
+    onsubmit="event.preventDefault()"
+    class="form"
+    aria-labelledby="form-title"
+  >
+    <div class="form__element">
+      <label for="title-input" class="">Email</label>
+      <input
+        id="title-input"
+        name="title"
+        type="text"
+        placeholder="your email address"
+        class="form__input form__input--bright"
+        required
+      />
+    </div>
+
+    <div class="form__element">
+      <label for="form-content-textarea" class="">Input your message</label>
+      <textarea
+        name="content"
+        id="form-content-textarea"
+        placeholder="Describe your project"
+        class="form__input form__input--bright"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="form__submit-button">Submit</button>
+  </form>
+</section>

@@ -1,0 +1,32 @@
+.footer-container {
+  padding: 55px 130px;
+  background-color: var(--color-dark-bg);
+}
+
+.footer {
+  gap: 100px;
+  justify-content: space-between;
+  color: var(--color-white-on-dark);
+  display: flex;
+  flex: 1;
+}
+
+.footer h2 {
+  color: var(--color-white-on-dark);
+  margin: 0;
+}
+
+.footer a {
+  color: var(--color-white-on-dark);
+}
+
+.social-networks {
+  display: flex;
+  gap: 40px;
+}
+
+.offer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}

@@ -20,5 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
   Promise.all([
     loadComponent(COMPONENT_PATH + "header.html", "header-placeholder"),
     loadComponent(COMPONENT_PATH + "footer.html", "footer-placeholder"),
+    loadComponent(COMPONENT_PATH + "form--dark.html", "form-placeholder"),
   ]).catch((e) => console.error(e));
 });
