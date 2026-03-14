@@ -24,6 +24,7 @@
   --color-bright-bg: #ffffff;
   --color-black-on-bright: #1a1b20;
   --color-dark-on-bright: #323747;
+  --color-dark-text-base: #323743;
   --color-gray-on-bright: #68686a;
   --color-gray-bright: #bdc1ca;
   --color-green-dark: #61c15c;
@@ -34,4 +35,3 @@
   --color-white-on-dark: #fdfeff;
   --color-placeholder-on-dark: #a3a6ad;
 }
-
