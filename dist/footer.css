@@ -31,3 +31,12 @@
   flex-direction: column;
   gap: 28px;
 }
+
+.social-networks__link {
+  transition: transform 0.3s;
+}
+
+[class$="--bouncing"]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+}

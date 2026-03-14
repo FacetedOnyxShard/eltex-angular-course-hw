@@ -6,7 +6,7 @@
     <title>Блог</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon" />
-    <link rel="preload" href="/dist/font.css" />
+    <link rel="preload" href="/dist/font.css" as="font" type="font/woff2" />
 
     <link rel="stylesheet" href="/dist/main.css" />
   </head>
@@ -35,7 +35,7 @@
               class="card__image"
             />
 
-            <div class="card__text .card__text--big">
+            <div class="card__text card__text--big">
               <header>
                 <h3>Как создать адаптивный дизайн за 30 минут</h3>
               </header>
@@ -70,7 +70,9 @@
           </div>
 
           <div class="button-container">
-            <button class="blog__next-button">Next</button>
+            <button class="blog__next-button blog__next-button--bouncing">
+              Next
+            </button>
           </div>
         </section>
       </section>

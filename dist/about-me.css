@@ -19,13 +19,16 @@
 .about-me__main-image {
   min-width: var(--main-image-width);
   min-height: var(--main-image-height);
-  position: relative;
   z-index: 1;
 }
 
+.about-me__images {
+  position: relative;
+}
+
 .about-me__design-element {
-  right: calc(var(--main-image-width) + 8px);
-  top: calc(var(--main-image-height) - 43%);
+  left: -90px;
+  top: 40%;
   position: absolute;
   z-index: 1;
 }

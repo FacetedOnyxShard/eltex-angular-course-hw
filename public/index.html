@@ -6,7 +6,7 @@
     <title>Главная</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon" />
-    <link rel="preload" href="/dist/font.css" />
+    <link rel="preload" href="/dist/font.css" as="font" type="font/woff2" />
 
     <link rel="stylesheet" href="/dist/main.css" />
   </head>
@@ -26,7 +26,7 @@
             quis aute
           </p>
 
-          <a href="#" class="about-me__link">More about me</a>
+          <a href="#skills-section" class="about-me__link">More about me</a>
         </div>
 
         <div class="about-me__images">
@@ -81,10 +81,12 @@
           />
         </article>
 
-        <a class="browse-button" href="#">Browse all posts</a>
+        <a class="browse-button browse-button--bouncing" href="#"
+          >Browse all posts</a
+        >
       </section>
 
-      <section class="skills">
+      <section class="skills" id="skills-section">
         <h2 class="skills__title">My skills</h2>
         <ul class="skills__list">
           <li class="skills__element skills__element--bottom-hr">
@@ -126,9 +128,7 @@
                 />
                 <div class="record__text">
                   <p class="record__period">Consectetur - (2016 - 2017)</p>
-                  <h3 class="record__title record__title--small-h3-title">
-                    Graphic design
-                  </h3>
+                  <h4 class="record__title">Graphic design</h4>
                   <p class="record__description">
                     Nostrud tempor cillum sunt excepteur do ut proident deserunt
                     enim consequat exercitatio

@@ -15,7 +15,7 @@
   height: 75px;
 }
 
-.record__title--small-h3-title {
+.record__title {
   font-weight: var(--font-regular);
   font-size: var(--text-xl);
 }

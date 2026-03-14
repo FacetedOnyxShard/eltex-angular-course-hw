@@ -1,16 +1,10 @@
 <section class="">
-  <form
-    action="#"
-    method="post"
-    onsubmit="event.preventDefault()"
-    class="form"
-    aria-labelledby="form-title"
-  >
+  <form action="#" method="post" onsubmit="event.preventDefault()" class="form">
     <div class="form__element">
-      <label for="title-input" class="">Email</label>
+      <label for="email-input" class="">Email</label>
       <input
-        id="title-input"
-        name="title"
+        id="email-input"
+        name="email"
         type="text"
         placeholder="your email address"
         class="form__input form__input--bright"
@@ -29,6 +23,11 @@
       ></textarea>
     </div>
 
-    <button type="submit" class="form__submit-button">Submit</button>
+    <button
+      type="submit"
+      class="form__submit-button form__submit-button--bouncing"
+    >
+      Submit
+    </button>
   </form>
 </section>

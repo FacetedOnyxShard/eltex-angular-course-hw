@@ -16,8 +16,12 @@
   outline: none;
   border: 1px solid var(--color-dark-on-bright);
 }
+.form__input:focus {
+  border: 1px solid var(--color-green-dark);
+}
 
 .form__input--bright {
+  color: var(--color-white-on-dark);
   border: 1px solid var(--color-white-on-dark);
   background-color: var(--color-dark-bg);
 }
