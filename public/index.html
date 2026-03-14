@@ -7,44 +7,47 @@
 
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="/dist/font.css" />
+
     <link rel="stylesheet" href="/dist/main.css" />
   </head>
 
   <body class="page">
-    <header class="header flex">
-      <a
-        href="/public/index.html"
-        aria-current="page"
-        class="header__company-sign"
-        >Name-folio</a
-      >
-      <nav aria-label="Основная навигация">
-        <ul class="header__content">
-          <li>
-            <a href="blog.html" class="header__element" data-text="About me"
-              >About me</a
-            >
-          </li>
-          <li>
-            <a href="blog.html" class="header__element" data-text="Blog"
-              >Blog</a
-            >
-          </li>
-          <li>
-            <a href="blog.html" class="header__element" data-text="Contact"
-              >Contact</a
-            >
-          </li>
-        </ul>
-      </nav>
+    <header class="header">
+      <div class="header__content">
+        <a
+          href="/public/index.html"
+          aria-current="page"
+          class="header__company-sign"
+          >Name-folio</a
+        >
+        <nav aria-label="Основная навигация">
+          <ul class="header__nav">
+            <li>
+              <a href="blog.html" class="header__element" data-text="About me"
+                >About me</a
+              >
+            </li>
+            <li>
+              <a href="blog.html" class="header__element" data-text="Blog"
+                >Blog</a
+              >
+            </li>
+            <li>
+              <a href="blog.html" class="header__element" data-text="Contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main class="main-content">
       <section class="about-me">
-        <div>
-          <h2>Hello! I’m Nelsom, a photographer</h2>
+        <div class="about-me__text-block">
+          <h2 class="about-me__header">Hello! I’m Nelsom, a photographer</h2>
 
-          <p class="about-me__text">
+          <p class="about-me__paragraph">
             Occaecat elit pariatur non Lorem laborum proident Lorem non sint
             nostrud. Et dolore incididunt mollit nostrud Lorem dolore. Qui
             aliquip aute amet eu adipisicing velit ullamco nulla sint enim do
@@ -54,19 +57,37 @@
           <a href="#" class="about-me__link">More about me</a>
         </div>
 
-        <div>
+        <div class="about-me__images">
           <img
-            src="./assets/images/mountains_and_flowers.png"
+            src="/src/assets/images/designed-mountains-and-flowers.svg"
             alt="Горный пейзаж с цветущим лугом на переднем плане"
             class="about-me__main-image"
           />
 
           <img
-            src="./assets/images/text-circle-design-element.png"
+            src="/src/assets/images/text-circle-design-element.svg"
             alt="Круговая надпись my blogs со стрелкой вниз (декоративный элемент)"
             class="about-me__design-element"
           />
         </div>
+      </section>
+
+      <section class="recently-posts">
+        <article class="post">
+          <span class="post__category">Product photography</span>
+          <h3 class="post__title">Paris secrets</h3>
+          <p class="post__description">
+            Sint occaecat deserunt aliquip do occaecat ut quis. Cupidatat magna
+            fugiat quis sit duis est in volup
+          </p>
+          <img
+            class="post__image"
+            src="/src/assets/images/empty-picture.png"
+            alt=""
+          />
+        </article>
+
+        <a class="browse-button" href="#">Browse all posts</a>
       </section>
 
       <section>

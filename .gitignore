@@ -29,3 +29,5 @@ yarn-error.log*
 # my for this project
 # /dist/
 /src/styles/
+/venv/
+*.txt
