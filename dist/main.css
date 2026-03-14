@@ -71,28 +71,14 @@ time {
 .main-content {
   display: flex;
   flex-direction: column;
+
+  flex: 1;
   gap: 100px;
 }
 
 .main-content,
 .footer {
   padding: 0 130px;
-}
-
-.main-content {
-  flex: 1;
-}
-
-.flex {
-  display: flex;
-}
-
-.fd-column {
-  flex-direction: column;
-}
-
-.fd-row {
-  flex-direction: row;
 }
 
 .experience-text {
@@ -122,22 +108,12 @@ a.button:hover {
   gap: 14px;
 }
 
-.flex-1 {
-  flex: 1;
-}
-
 .submit-button {
   width: 100px;
 }
 
 .line-element {
   height: 30px;
-}
-
-nav[aria-label="Социальные сети"] ul li:not(:last-child) a::after {
-  content: "|";
-  text-decoration: none;
-  margin: 0 5px;
 }
 
 .visually-hidden {
