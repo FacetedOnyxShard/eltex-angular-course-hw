@@ -16,7 +16,7 @@
   font-weight: var(--font-regular);
 }
 
-.skills__element::after {
+[class$="--bottom-hr"]::after {
   content: "";
   display: block;
 

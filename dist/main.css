@@ -5,6 +5,8 @@
 @import url("./about-me.css");
 @import url("./recently-posts.css");
 @import url("./skills.css");
+@import url("./job-experience.css");
+@import url("./timeline.css");
 
 * {
   box-sizing: border-box;
@@ -50,8 +52,6 @@ a {
 p,
 time {
   font-size: var(--text-base);
-  margin-bottom: 27px;
-  margin-top: 7px;
 }
 
 .mail-view {

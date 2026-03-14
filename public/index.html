@@ -115,14 +115,60 @@
       <section class="skills">
         <h2 class="skills__title">My skills</h2>
         <ul class="skills__list">
-          <li class="skills__element">Photography</li>
-          <li class="skills__element">Graphic Design</li>
-          <li class="skills__element">Creativity</li>
-          <li class="skills__element">Brand Identity</li>
-          <li class="skills__element">Copy Writing</li>
-          <li class="skills__element">Team Working</li>
+          <li class="skills__element skills__element--bottom-hr">
+            Photography
+          </li>
+          <li class="skills__element skills__element--bottom-hr">
+            Graphic Design
+          </li>
+          <li class="skills__element skills__element--bottom-hr">Creativity</li>
+          <li class="skills__element skills__element--bottom-hr">
+            Brand Identity
+          </li>
+          <li class="skills__element skills__element--bottom-hr">
+            Copy Writing
+          </li>
+          <li class="skills__element skills__element--bottom-hr">
+            Team Working
+          </li>
         </ul>
       </section>
+
+      <section class="job-experience">
+        <div class="job-experience__text">
+          <h2 class="job-experience__title">My work</h2>
+          <p class="job-experience__description">
+            Duis nisi do exercitation in irure aliqua commodo nisi eu id
+            reprehenderit dolore fugiat consectetur irure
+          </p>
+        </div>
+
+        <ul class="timeline" id="job-experience-timeline-list">
+          <template id="job-experience-timeline-template-element">
+            <li class="timeline__element timeline__element--bottom-hr">
+              <div class="record">
+                <img
+                  src="/src/assets/images/graphic-design-logo.png"
+                  alt=""
+                  class="record__image"
+                />
+                <div class="record__text">
+                  <p class="record__period">Consectetur - (2016 - 2017)</p>
+                  <h3 class="record__title record__title--small-h3-title">
+                    Graphic design
+                  </h3>
+                  <p class="record__description">
+                    Nostrud tempor cillum sunt excepteur do ut proident deserunt
+                    enim consequat exercitatio
+                  </p>
+                </div>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </section>
+
+      <section class="hobby"></section>
 
       <section>
         <h2>Моя карьера</h2>
@@ -301,5 +347,7 @@
         </nav>
       </section>
     </footer>
+
+    <script type="module" src="/src/scripts/script.js"></script>
   </body>
 </html>
