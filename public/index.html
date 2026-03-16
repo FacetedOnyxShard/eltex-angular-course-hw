@@ -6,9 +6,17 @@
     <title>Главная</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon" />
-    <link rel="preload" href="/src/styles/font.css" as="font" type="font/woff2" />
+    <link
+      rel="preload"
+      href="/src/styles/font.css"
+      as="font"
+      type="font/woff2"
+    />
 
     <link rel="stylesheet" href="/src/styles/main.css" />
+
+    <!-- раскомментировать для деплоя -->
+    <!-- <base href="https://facetedonyxshard.github.io/eltex-angular-course-hw/" /> -->
   </head>
 
   <body class="page">
@@ -31,7 +39,7 @@
 
         <div class="about-me__images">
           <img
-            src="/src/assets/images/designed-mountains-and-flowers.svg"
+            src="/src/assets/images/designed-mountains-and-flowers.png"
             alt="Горный пейзаж с цветущим лугом на переднем плане"
             class="about-me__main-image"
           />
@@ -81,7 +89,9 @@
           />
         </article>
 
-        <a class="browse-button browse-button--bouncing" href="#"
+        <a
+          class="browse-button browse-button--bouncing"
+          href="/src/pages/blog.html"
           >Browse all posts</a
         >
       </section>

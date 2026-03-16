@@ -1,8 +1,8 @@
 @import url("./vars.css");
 
 :root {
-  --main-image-width: 546px;
-  --main-image-height: 665px;
+  --main-image-width: 479px;
+  --main-image-height: 647px;
 }
 
 .about-me {
@@ -27,10 +27,19 @@
 }
 
 .about-me__design-element {
-  left: -90px;
-  top: 40%;
+  left: -118px;
+  top: 39%;
   position: absolute;
   z-index: 1;
+}
+
+.about-me__header {
+  margin-bottom: 35px;
+}
+
+.about-me__paragraph {
+  color: var(--color-gray-on-bright);
+  margin-bottom: 14px;
 }
 
 .about-me__link {
@@ -46,5 +55,6 @@
   content: url("/src/assets/icons/continue-icon.svg");
   color: var(--color-green-dark);
 
-  height: 100%;
+  height: 19px;
+  line-height: 100%;
 }

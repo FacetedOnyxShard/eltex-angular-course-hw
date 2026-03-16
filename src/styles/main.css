@@ -37,11 +37,13 @@ h6 {
 h2 {
   font-size: var(--text-5xl);
   color: var(--color-dark-on-bright);
+  line-height: 63px;
 }
 
 h3 {
   font-size: var(--text-4xl);
   color: var(--color-dark-on-bright);
+  line-height: 29px;
 }
 
 li {
@@ -69,6 +71,8 @@ time {
 
   display: flex;
   flex-direction: column;
+
+  margin-top: 30px;
 }
 
 .main-content {

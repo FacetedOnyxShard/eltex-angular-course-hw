@@ -1,7 +1,9 @@
 .footer-container {
   padding: 55px 130px;
   background-color: var(--color-dark-bg);
+
   margin-top: 65px;
+  position: relative;
 }
 
 .footer {
@@ -32,6 +34,12 @@
   gap: 28px;
 }
 
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .social-networks__link {
   transition: transform 0.3s;
 }
@@ -39,4 +47,9 @@
 [class$="--bouncing"]:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+}
+
+.trademark {
+  position: absolute;
+  bottom: 15px;
 }
