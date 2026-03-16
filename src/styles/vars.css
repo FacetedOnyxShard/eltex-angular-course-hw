@@ -36,3 +36,7 @@
   --color-white-on-dark: #fdfeff;
   --color-placeholder-on-dark: #a3a6ad;
 }
+
+:root {
+  --page-padding: 130px;
+}

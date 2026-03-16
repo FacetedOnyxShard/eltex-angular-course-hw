@@ -17,8 +17,8 @@
 }
 
 .about-me__main-image {
-  min-width: var(--main-image-width);
-  min-height: var(--main-image-height);
+  max-width: var(--main-image-width);
+  max-height: var(--main-image-height);
   z-index: 1;
 }
 
