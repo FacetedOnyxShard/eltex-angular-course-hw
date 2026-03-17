@@ -1,0 +1,31 @@
+<form action="#" method="post" onsubmit="event.preventDefault()" class="form">
+  <div class="form__element">
+    <label for="email-input" class="">Email</label>
+    <input
+      id="email-input"
+      name="email"
+      type="text"
+      placeholder="your email address"
+      class="form__input form__input--bright"
+      required
+    />
+  </div>
+
+  <div class="form__element">
+    <label for="form-content-textarea" class="">Input your message</label>
+    <textarea
+      name="content"
+      id="form-content-textarea"
+      placeholder="Describe your project"
+      class="form__input form__input--bright form__input--tall"
+      required
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="form__submit-button form__submit-button--bouncing"
+  >
+    Submit
+  </button>
+</form>

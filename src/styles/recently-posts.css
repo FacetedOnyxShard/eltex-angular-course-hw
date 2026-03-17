@@ -1,0 +1,56 @@
+@import url("./vars.css");
+
+.browse-button {
+  padding: 12px 30px;
+  text-align: center;
+  width: 200px;
+
+  border: 1px solid var(--color-green-dark);
+  border-radius: 5px;
+
+  color: var(--color-green-dark);
+  justify-content: center;
+}
+
+.recently-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+
+  align-items: center;
+}
+
+.post {
+  display: flex;
+  flex-direction: row;
+}
+
+.post:nth-child(odd) {
+  background-color: var(--color-orange-bright);
+}
+
+.post:nth-child(even) {
+  background-color: var(--color-green-bright);
+}
+
+.post__category--orange {
+  color: var(--color-orange-dark);
+}
+
+.post__category--green {
+  color: var(--color-green-dark);
+}
+
+.post__text {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 60px 0 50px;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.post__image {
+  width: 690px;
+  height: 400px;
+}

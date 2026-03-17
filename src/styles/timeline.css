@@ -1,0 +1,32 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+
+  gap: 36px;
+}
+
+.record {
+  display: flex;
+  gap: 20px;
+}
+
+.record__image {
+  width: 75px;
+  height: 75px;
+}
+
+.record__title {
+  font-weight: var(--font-regular);
+  font-size: var(--text-xl);
+}
+
+.record__text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.record__description,
+.record__period {
+  display: inline;
+}
