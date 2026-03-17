@@ -25,8 +25,8 @@
 }
 
 .card--small {
-  width: 350px;
-  height: 320px;
+  width: 100%;
+  height: auto;
 }
 
 .card__text {
@@ -37,6 +37,11 @@
   justify-content: center;
 }
 
+.card__image {
+  width: 100%;
+  height: auto;
+}
+
 .card__text--big {
   padding: 0 30px;
   padding-bottom: 30px;
@@ -44,9 +49,12 @@
 
 .blog__small-cards-container {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
   column-gap: 36px;
   row-gap: 64px;
+
+  max-width: calc(100vw - 2 * var(--page-padding));
 }
 
 .posts-section {

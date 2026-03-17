@@ -7,11 +7,13 @@
 }
 
 .footer {
-  gap: 100px;
-  justify-content: space-between;
   color: var(--color-white-on-dark);
+
   display: flex;
+  justify-content: start;
   flex: 1;
+
+  gap: 100px;
 }
 
 .footer h2 {
@@ -31,7 +33,9 @@
 .offer-section {
   display: flex;
   flex-direction: column;
+
   gap: 28px;
+  max-width: 480px;
 }
 
 .info-section {

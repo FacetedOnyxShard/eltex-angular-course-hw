@@ -84,7 +84,8 @@ time {
 }
 
 .main-content {
-  padding: 0 130px;
+  max-width: calc(100vw - var(--page-padding) * 2);
+  margin: 0 auto;
   padding-top: 50px;
 }
 

@@ -39,4 +39,26 @@
 
 :root {
   --page-padding: 130px;
+  --main-image-width: 30em;
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --page-padding: 60px;
+    --main-image-width: 25em;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding: 30px;
+    --main-image-width: 20em;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --page-padding: 15px;
+    --main-image-width: 15em;
+  }
 }

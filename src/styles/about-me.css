@@ -16,14 +16,19 @@
   align-self: center;
 }
 
-.about-me__main-image {
-  max-width: var(--main-image-width);
-  max-height: var(--main-image-height);
-  z-index: 1;
-}
-
 .about-me__images {
   position: relative;
+}
+
+.about-me__main-image {
+  display: block;
+  max-width: none;
+  width: var(--main-image-width);
+
+  height: auto;
+  object-fit: cover;
+
+  z-index: 1;
 }
 
 .about-me__design-element {

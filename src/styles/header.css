@@ -40,6 +40,8 @@
   color: var(--color-gray-on-bright);
   position: relative;
   display: inline-block;
+
+  transition: all 0.3s ease;
 }
 
 .header__element::before {
