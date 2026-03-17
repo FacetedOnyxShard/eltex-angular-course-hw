@@ -57,7 +57,7 @@
 }
 
 .about-me__link::after {
-  content: url("/src/assets/icons/continue-icon.svg");
+  content: url("src/assets/icons/continue-icon.svg");
   color: var(--color-green-dark);
 
   height: 19px;
