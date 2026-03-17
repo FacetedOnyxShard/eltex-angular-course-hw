@@ -4,7 +4,7 @@ function addElementsToJobExperienceTimeline() {
     "job-experience-timeline-template-element",
   );
 
-  const BASE_IMG_PATH = "/src/assets/images/";
+  const BASE_IMG_PATH = "src/assets/images/";
 
   const items = [
     {

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  const COMPONENT_PATH = "/src/pages/components/";
+  const COMPONENT_PATH = "src/pages/components/";
 
   async function loadComponents() {
     loadComponent(COMPONENT_PATH + "header.html", "header-placeholder");
