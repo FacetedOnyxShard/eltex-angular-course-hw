@@ -59,3 +59,7 @@
   font-weight: var(--font-bold);
   color: var(--color-green-dark);
 }
+
+.contact {
+  scroll-behavior: smooth;
+}
