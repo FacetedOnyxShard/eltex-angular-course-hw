@@ -25,11 +25,11 @@
   flex-direction: row;
 }
 
-.post--orange-bg {
+.post:nth-child(odd) {
   background-color: var(--color-orange-bright);
 }
 
-.post--green-bg {
+.post:nth-child(even) {
   background-color: var(--color-green-bright);
 }
 
