@@ -85,15 +85,32 @@
       <div class="admin-panel">
         <div class="admin-panel__content">
           <img
+            id="open-button-for-add-post"
             class="admin-panel__button"
             src="src/assets/icons/post_add.svg"
             alt=""
+            title="Добавить статью"
           />
           <img
             class="admin-panel__button"
             src="src/assets/icons/stats.svg"
             alt=""
+            title="Просмотр статистики"
           />
+        </div>
+      </div>
+
+      <div id="dialog-container" class="dialog-container">
+        <div class="dialog">
+          <img
+            id="close-button-for-dialog"
+            class="dialog__close-button"
+            src="src/assets/icons/icons8-крестик-78.png"
+            alt=""
+          />
+          <div class="dialog__content">
+            <div id="form-bright-placeholder"></div>
+          </div>
         </div>
       </div>
     </main>
@@ -102,5 +119,6 @@
 
     <script type="module" src="src/scripts/blog-script.js"></script>
     <script type="module" src="src/scripts/include.js"></script>
+    <script type="module" src="src/scripts/script.js"></script>
   </body>
 </html>

@@ -4,6 +4,8 @@
 
   margin-top: 65px;
   position: relative;
+
+  z-index: -1;
 }
 
 .footer {

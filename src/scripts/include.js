@@ -21,7 +21,15 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent(COMPONENT_PATH + "header.html", "header-placeholder");
 
     await loadComponent(COMPONENT_PATH + "footer.html", "footer-placeholder");
-    await loadComponent(COMPONENT_PATH + "form--dark.html", "form-placeholder");
+    await loadComponent(
+      COMPONENT_PATH + "form--dark.html",
+      "form-dark-placeholder",
+    );
+
+    await loadComponent(
+      COMPONENT_PATH + "form--bright.html",
+      "form-bright-placeholder",
+    );
   }
 
   loadComponents().catch((e) => console.error(e));
