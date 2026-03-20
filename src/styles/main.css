@@ -11,6 +11,7 @@
 @import url("./footer.css");
 @import url("./form.css");
 @import url("./blog.css");
+@import url("./admin-panel.css");
 
 * {
   box-sizing: border-box;
