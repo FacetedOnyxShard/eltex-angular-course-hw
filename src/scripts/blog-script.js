@@ -36,13 +36,46 @@ function initDialogLogic() {
   return true;
 }
 
+function initStatsDialogLogic() {
+  const dialog = document.getElementById("stats-dialog-container");
+  const openButton = document.getElementById("open-button-for-stats");
+  const closeButton = document.getElementById("close-button-for-stats-dialog");
+
+  openButton.addEventListener("click", () => {
+    dialog.style.display = "flex";
+  });
+  closeButton.addEventListener("click", () => {
+    dialog.style.display = "none";
+  });
+
+  // кнопки на форме
+  const addButton = document.getElementById(
+    "stats-dialog-form-add-post-button",
+  );
+  const cancelButton = document.getElementById(
+    "stats-dialog-form-cancel-button",
+  );
+
+  if (!dialog || !openButton || !closeButton || !addButton || !cancelButton)
+    return false;
+
+  cancelButton.addEventListener("click", () => {
+    dialog.style.display = "none";
+  });
+
+  return true;
+}
+
 export function waitForDialogElements() {
   const observer = new MutationObserver((m, obs) => {
     const dialog = document.getElementById("dialog-container");
     const openButton = document.getElementById("open-button-for-add-post");
 
-    if (dialog && openButton) {
-      if (initDialogLogic()) {
+    const statsDialog = document.getElementById("dialog-container");
+    const statsOpenButton = document.getElementById("open-button-for-add-post");
+
+    if (dialog && openButton && statsDialog && statsOpenButton) {
+      if (initDialogLogic() && initStatsDialogLogic()) {
         obs.disconnect();
       }
     }
