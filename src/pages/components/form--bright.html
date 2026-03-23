@@ -1,11 +1,11 @@
-<form action="#" method="post" onsubmit="event.preventDefault()" class="form">
+<form action="#" method="post" class="form" id="form--bright">
   <h3 class="form__header">Добавить статью</h3>
 
   <div class="form__element">
-    <label for="email-input" class="">Заголовок</label>
+    <label for="form-title-input" class="">Заголовок</label>
     <input
-      id="email-input"
-      name="email"
+      id="form-title-input"
+      name="form-title-input"
       type="text"
       placeholder="Заголовок"
       class="form__input form__input--bright"
@@ -14,10 +14,10 @@
   </div>
 
   <div class="form__element">
-    <label for="form-content-textarea" class="">Текст статьи</label>
+    <label for="form-article-content" class="">Текст статьи</label>
     <textarea
       name="content"
-      id="form-content-textarea"
+      id="form-article-content"
       placeholder="Текст статьи"
       class="form__input form__input--bright form__input--tall"
       required

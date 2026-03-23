@@ -32,7 +32,7 @@
           <img src="src/assets/images/text-circle-design-element.png" alt="" />
         </section>
 
-        <section class="posts-section">
+        <section class="posts-section" id="posts-section">
           <article class="card card--big">
             <img
               src="src/assets/images/empty-picture.png"
@@ -102,6 +102,7 @@
       </div>
 
       <!-- для добавления статей -->
+      <!-- FIXME: сделать, чтобы при открытии другого диалога, предыдущий автоматически закрывался -->
       <div id="dialog-container" class="dialog-container">
         <div class="dialog">
           <img
@@ -117,6 +118,7 @@
       </div>
 
       <!-- для статистики -->
+      <!-- FIXME: диалог проваливается под footer -->
       <div id="stats-dialog-container" class="stats-dialog-container">
         <div class="stats-dialog">
           <img
@@ -125,11 +127,15 @@
             src="src/assets/icons/icons8-крестик-78.png"
             alt=""
           />
+          <h3 class="stats-dialog__header">Статистика страницы</h3>
           <div class="stats-dialog__content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-            animi excepturi commodi, facilis quam, ad libero fugit minima
-            assumenda tenetur ut provident magni, ab sunt quos asperiores!
-            Repellat, qui rem!
+            <div class="stats-dialog__metrics">
+              <div class="metric-section" id="posts-count"></div>
+              <div class="metric-section" id="comments-count">
+                <h4 class="metric-section__title">Комментарии:</h4>
+                <p class="metric-section__metric">0</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

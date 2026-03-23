@@ -48,6 +48,11 @@ h3 {
   line-height: 29px;
 }
 
+h4 {
+  font-weight: var(--font-regular);
+  font-size: var(--text-xl);
+}
+
 li {
   font-size: var(--text-base);
 }
