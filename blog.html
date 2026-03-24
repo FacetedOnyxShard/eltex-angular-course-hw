@@ -33,11 +33,12 @@
         </section>
 
         <section class="posts-section" id="posts-section">
-          <article class="card card--big">
+          <article class="card card--big" id="first-article">
             <img
               src="src/assets/images/empty-picture.png"
               alt=""
               class="card__image"
+              id="first-article__image"
             />
 
             <div class="card__text card__text--big" id="first-article">
@@ -91,22 +92,26 @@
         </section>
       </section>
 
-      <div class="admin-panel">
-        <div class="admin-panel__content">
-          <img
-            id="open-button-for-add-post"
-            class="admin-panel__button"
-            src="src/assets/icons/post_add.svg"
-            alt=""
-            title="Добавить статью"
-          />
-          <img
-            id="open-button-for-stats"
-            class="admin-panel__button"
-            src="src/assets/icons/stats.svg"
-            alt=""
-            title="Просмотр статистики"
-          />
+      <div class="admin-menu-wrapper">
+        <div class="admin-menu__trigger"></div>
+
+        <div class="admin-panel">
+          <div class="admin-panel__content">
+            <img
+              id="open-button-for-add-post"
+              class="admin-panel__button"
+              src="src/assets/icons/post_add.svg"
+              alt=""
+              title="Добавить статью"
+            />
+            <img
+              id="open-button-for-stats"
+              class="admin-panel__button"
+              src="src/assets/icons/stats.svg"
+              alt=""
+              title="Просмотр статистики"
+            />
+          </div>
         </div>
       </div>
 

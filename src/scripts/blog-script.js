@@ -33,8 +33,6 @@ function addElementsToBlog() {
   }
 }
 
-addElementsToBlog();
-
 function closeDialog(dialog) {
   dialog.classList.remove("show-dialog");
 }
@@ -57,24 +55,24 @@ function commonDialogEvents(dialog, otherDialog, openButton, closeButton) {
   });
 }
 
-// function addArticle() {
-//   const form = document.getElementById("form--bright");
+function addArticle() {
+  const form = document.getElementById("form--bright");
 
-//   form.onsubmit = (e) => {
-//     e.preventDefault();
+  form.onsubmit = (e) => {
+    e.preventDefault();
 
-//     const newArticle = {
-//       id: crypto.randomUUID(),
-//       image: "../empty-picture.png",
-//       title: document.getElementById("form-title-input").value,
-//       content: document.getElementById("form-article-content").value,
-//       publicationDate: new Date(),
-//     };
+    const newArticle = {
+      id: crypto.randomUUID(),
+      image: "../empty-picture.png",
+      title: document.getElementById("form-title-input").value,
+      content: document.getElementById("form-article-content").value,
+      publicationDate: new Date(),
+    };
 
-//     localStorage.setItem("articles", JSON.stringify(newArticle));
-//     form.reset();
-//   };
-// }
+    localStorage.setItem("articles", JSON.stringify(newArticle));
+    form.reset();
+  };
+}
 
 function initAddPostDialogLogic() {
   const dialog = document.getElementById("dialog-container");
@@ -131,10 +129,6 @@ export function waitForDialogElements() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  waitForDialogElements();
-});
-
 function calculatePostsCount() {
   const postContainer = document.getElementById("posts-section");
   const articles = postContainer.querySelectorAll("article");
@@ -145,14 +139,6 @@ function calculatePostsCount() {
     <p class="metric-section__metric">${articles.length}</p>
   `;
 }
-
-calculatePostsCount();
-
-// function workWithDynamicArticles() {}
-
-// workWithDynamicArticles();
-
-function createArticleElement() {}
 
 function createSmallCardElement(article) {
   const template = document.getElementById("small-card-template");
@@ -166,3 +152,47 @@ function createSmallCardElement(article) {
 
   return clone;
 }
+
+function createBigCardElement(article) {
+  const bigCard = document.getElementById("first-article");
+
+  const clone = document.bigCard.cloneNode(true);
+
+  const image = clone.getElementById("first-article__image");
+  const title = clone.getElementById("first-article__title");
+  const content = clone.getElementById("first-article__content");
+  const date = clone.getElementById("first-article__date");
+
+  image.textContent = article.image;
+  title.textContent = article.title;
+  content.textContent = article.content;
+  date.textContent = `Опубликовано: ${formatDate(article.publicationDate)}`;
+  date.setAttribute("datetime", formatDate(article.publicationDate));
+
+  return clone;
+}
+
+function saveArticleToLocalStorage(article) {
+  let articles = getAllArticlesFromLocalStorage();
+  articles.push(article);
+  localStorage.setItem("articles", JSON.stringify(articles));
+}
+
+function getArticlesFromLocalStorage() {
+  const articles = JSON.parse(localStorage.getItem("article")) || [];
+  return articles;
+}
+
+function loadArticles() {}
+
+async function main() {
+  addElementsToBlog();
+
+  document.addEventListener("DOMContentLoaded", () => {
+    waitForDialogElements();
+    loadArticles();
+    calculatePostsCount();
+  });
+}
+
+main().catch(console.error);
