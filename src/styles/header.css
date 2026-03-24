@@ -9,7 +9,7 @@
   flex-direction: column;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .header__content {
@@ -20,7 +20,7 @@
   flex: 1;
   padding: 0 var(--page-padding);
 
-  z-index: 1000;
+  z-index: 3;
 
   background-color: var(--color-bright-bg);
 }
