@@ -12,6 +12,8 @@
 
   justify-content: center;
   align-items: center;
+
+  z-index: 2;
 }
 
 .dialog {
@@ -20,7 +22,7 @@
 
   width: 50%;
   background-color: var(--color-bright-bg);
-  z-index: 9999;
+  z-index: 2;
 
   display: flex;
   flex-direction: column;
@@ -39,6 +41,13 @@
   cursor: pointer;
 
   object-fit: cover;
+
+  transition: all 0.3s ease;
+}
+
+.dialog__close-button:hover {
+  filter: brightness(0.8);
+  transform: scale(1.1);
 }
 
 .stats-dialog-container {
@@ -80,6 +89,13 @@
   cursor: pointer;
 
   object-fit: cover;
+
+  transition: all 0.3s ease;
+}
+
+.stats-dialog__close-button:hover {
+  filter: brightness(0.8);
+  transform: scale(1.1);
 }
 
 .show-dialog {

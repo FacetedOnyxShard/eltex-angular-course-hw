@@ -40,18 +40,22 @@
               class="card__image"
             />
 
-            <div class="card__text card__text--big">
+            <div class="card__text card__text--big" id="first-article">
               <header>
-                <h3>Как создать адаптивный дизайн за 30 минут</h3>
+                <h3 id="first-article__title">
+                  Как создать адаптивный дизайн за 30 минут
+                </h3>
               </header>
-              <p>
+              <p id="first-article__content">
                 В этой статье я расскажу о ключевых принципах создания мобильных
                 интерфейсов, которые одинаково хорошо выглядят на всех
                 устройствах. Вы узнаете о медиа-запросах, гибких сетках и
                 практических примерах кода, которые можно использовать прямо
                 сейчас.
               </p>
-              <time datetime="2024-12-15">Опубликовано: 15 декабря 2024</time>
+              <time datetime="2024-12-15" id="first-article__date"
+                >Опубликовано: 15 декабря 2024</time
+              >
             </div>
           </article>
 
@@ -65,10 +69,13 @@
                 />
 
                 <div class="card__text">
-                  <h4 class="card__title">
+                  <h4 class="card__title" id="small-card-template__title">
                     Minim anim pariatur magna duis sit et dolor incididunt
                   </h4>
-                  <time class="card__date" datetime="2024-12-15"
+                  <time
+                    class="card__date"
+                    datetime="2024-12-15"
+                    id="small-card-template__date"
                     >Опубликовано: 15 декабря 2024</time
                   >
                 </div>
@@ -104,7 +111,6 @@
       </div>
 
       <!-- для добавления статей -->
-      <!-- FIXME: сделать, чтобы при открытии другого диалога, предыдущий автоматически закрывался -->
       <div id="dialog-container" class="dialog-container">
         <div class="dialog">
           <img
@@ -120,7 +126,6 @@
       </div>
 
       <!-- для статистики -->
-      <!-- FIXME: диалог проваливается под footer -->
       <div id="stats-dialog-container" class="stats-dialog-container">
         <div class="stats-dialog">
           <img

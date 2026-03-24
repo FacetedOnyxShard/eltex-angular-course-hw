@@ -35,49 +35,54 @@ function addElementsToBlog() {
 
 addElementsToBlog();
 
-function commonDialogEvents(dialog, openButton, closeButton) {
+function closeDialog(dialog) {
+  dialog.classList.remove("show-dialog");
+}
+
+function commonDialogEvents(dialog, otherDialog, openButton, closeButton) {
   dialog.addEventListener("click", (e) => {
     if (e.target === dialog) {
-      dialog.classList.remove("show-dialog");
+      closeDialog(dialog);
     }
   });
   openButton.addEventListener("click", () => {
+    if (otherDialog.classList.contains("show-dialog")) {
+      closeDialog(otherDialog);
+    }
+
     dialog.classList.add("show-dialog");
   });
   closeButton.addEventListener("click", () => {
-    dialog.classList.remove("show-dialog");
+    closeDialog(dialog);
   });
 }
 
-function getArticlesFromLocalStorage() {
-  localStorage.getItem("articles").split(",") ?? [];
-}
+// function addArticle() {
+//   const form = document.getElementById("form--bright");
 
-function addArticle() {
-  const form = document.getElementById("form--bright");
+//   form.onsubmit = (e) => {
+//     e.preventDefault();
 
-  form.onsubmit = (e) => {
-    e.preventDefault();
+//     const newArticle = {
+//       id: crypto.randomUUID(),
+//       image: "../empty-picture.png",
+//       title: document.getElementById("form-title-input").value,
+//       content: document.getElementById("form-article-content").value,
+//       publicationDate: new Date(),
+//     };
 
-    const newArticle = {
-      id: crypto.randomUUID(),
-      image: "../empty-picture.png",
-      title: document.getElementById("form-title-input").value,
-      content: document.getElementById("form-article-content").value,
-      publicationDate: new Date(),
-    };
-
-    localStorage.setItem("articles", JSON.stringify(newArticle));
-    form.reset();
-  };
-}
+//     localStorage.setItem("articles", JSON.stringify(newArticle));
+//     form.reset();
+//   };
+// }
 
 function initAddPostDialogLogic() {
   const dialog = document.getElementById("dialog-container");
+  const statsDialog = document.getElementById("stats-dialog-container");
   const openButton = document.getElementById("open-button-for-add-post");
   const closeButton = document.getElementById("close-button-for-dialog");
 
-  commonDialogEvents(dialog, openButton, closeButton);
+  commonDialogEvents(dialog, statsDialog, openButton, closeButton);
   // кнопки на форме
   const addButton = document.getElementById("dialog-form-add-post-button");
   const cancelButton = document.getElementById("dialog-form-cancel-button");
@@ -85,10 +90,10 @@ function initAddPostDialogLogic() {
   if (!dialog || !openButton || !closeButton || !addButton || !cancelButton)
     return false;
 
-  addArticle();
+  // addArticle();
 
   cancelButton.addEventListener("click", () => {
-    dialog.classList.remove("show-dialog");
+    closeDialog(dialog);
   });
 
   return true;
@@ -96,10 +101,11 @@ function initAddPostDialogLogic() {
 
 function initStatsDialogLogic() {
   const dialog = document.getElementById("stats-dialog-container");
+  const addPostdialog = document.getElementById("dialog-container");
   const openButton = document.getElementById("open-button-for-stats");
   const closeButton = document.getElementById("close-button-for-stats-dialog");
 
-  commonDialogEvents(dialog, openButton, closeButton);
+  commonDialogEvents(dialog, addPostdialog, openButton, closeButton);
 
   return true;
 }
@@ -142,9 +148,21 @@ function calculatePostsCount() {
 
 calculatePostsCount();
 
-function workWithDynamicArticles() {
-  let articles = JSON.parse(localStorage.getItem("articles")) ?? [];
-  console.log(articles);
-}
+// function workWithDynamicArticles() {}
 
-workWithDynamicArticles();
+// workWithDynamicArticles();
+
+function createArticleElement() {}
+
+function createSmallCardElement(article) {
+  const template = document.getElementById("small-card-template");
+  const clone = template.content.cloneNode(true);
+
+  const title = clone.getElementById("small-card-template__title");
+  const date = clone.getElementById("small-card-template__date");
+
+  title.textContent = article.title;
+  date.textContent = formatDate(article.date);
+
+  return clone;
+}
