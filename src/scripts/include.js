@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const COMPONENT_PATH = "src/pages/components/";
 
   async function loadComponents() {
-    loadComponent(COMPONENT_PATH + "header.html", "header-placeholder");
+    await loadComponent(COMPONENT_PATH + "header.html", "header-placeholder");
+    setActiveNavLink();
 
     await loadComponent(COMPONENT_PATH + "footer.html", "footer-placeholder");
     await loadComponent(
@@ -26,11 +27,30 @@ document.addEventListener("DOMContentLoaded", function () {
       "form-dark-placeholder",
     );
 
-    await loadComponent(
-      COMPONENT_PATH + "form--bright.html",
-      "form-bright-placeholder",
-    );
+    const currentPage =
+      window.location.pathname.split("/").pop() || "index.html";
+    if (currentPage === "blog.html") {
+      await loadComponent(
+        COMPONENT_PATH + "form--bright.html",
+        "form-bright-placeholder",
+      );
+    }
   }
 
   loadComponents().catch((e) => console.error(e));
 });
+
+function setActiveNavLink() {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const currentPageName = currentPage.replace(".html", "");
+
+  const navLinks = document.querySelectorAll(".header__element");
+
+  navLinks.forEach((link) => {
+    const pageAttr = link.getAttribute("data-page");
+
+    if (pageAttr === currentPageName) {
+      link.classList.add("header__element--active");
+    }
+  });
+}

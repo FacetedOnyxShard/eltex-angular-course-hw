@@ -20,7 +20,7 @@
 
 .hobby__images {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, 1fr);
 
   grid-column-gap: 36px;
   grid-row-gap: 25px;
@@ -50,11 +50,13 @@
 
 .hobby__img3 {
   grid-row: 1;
-  grid-column: 3/4;
+  grid-column: 3/5;
+  border-radius: 8px;
 }
 .hobby__img4 {
   grid-row: 2;
-  grid-column: 3/4;
+  grid-column: 3/5;
+  border-radius: 8px;
 }
 
 .overlay {
