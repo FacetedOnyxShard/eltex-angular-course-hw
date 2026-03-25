@@ -11,6 +11,8 @@
 @import url("./footer.css");
 @import url("./form.css");
 @import url("./blog.css");
+@import url("./admin-panel.css");
+@import url("./dialog.css");
 
 * {
   box-sizing: border-box;
@@ -44,6 +46,11 @@ h3 {
   font-size: var(--text-4xl);
   color: var(--color-dark-on-bright);
   line-height: 29px;
+}
+
+h4 {
+  font-weight: var(--font-regular);
+  font-size: var(--text-xl);
 }
 
 li {

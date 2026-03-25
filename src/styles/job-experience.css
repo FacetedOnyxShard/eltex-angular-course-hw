@@ -1,5 +1,14 @@
 .job-experience {
   display: flex;
   flex-direction: row;
-  gap: 25px;
+  justify-content: space-between;
+  flex: 1;
+
+  gap: 2.2vw;
+}
+
+.job-experience__text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }

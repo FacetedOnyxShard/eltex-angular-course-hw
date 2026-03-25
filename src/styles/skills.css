@@ -1,5 +1,9 @@
 @import url("./vars.css");
 
+.skills {
+  scroll-margin-top: 50px;
+}
+
 .skills__list {
   display: grid;
 

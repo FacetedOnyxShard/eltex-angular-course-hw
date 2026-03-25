@@ -1,0 +1,45 @@
+.admin-menu-wrapper {
+  position: fixed;
+  bottom: 25%;
+  right: -36px;
+
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.admin-menu-wrapper:hover {
+  right: 0;
+}
+
+:root {
+  --triger-height: 50px;
+}
+
+.admin-panel {
+  position: relative;
+
+  display: flex;
+  height: 7vw;
+  padding: 5px 12px;
+  border-radius: 20px 0 0 20px;
+
+  background-color: var(--color-bright-bg);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+
+  z-index: 10;
+}
+
+.admin-panel__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  justify-content: space-around;
+}
+
+.admin-panel__button {
+  width: 24px;
+  height: 24px;
+
+  cursor: pointer;
+}

@@ -32,30 +32,38 @@
           <img src="src/assets/images/text-circle-design-element.png" alt="" />
         </section>
 
-        <section class="posts-section">
-          <article class="card card--big">
+        <section class="posts-section" id="posts-section">
+          <article class="card card--big" id="first-article">
             <img
               src="src/assets/images/empty-picture.png"
               alt=""
               class="card__image"
+              id="first-article__image"
             />
 
-            <div class="card__text card__text--big">
+            <div class="card__text card__text--big" id="first-article">
               <header>
-                <h3>Как создать адаптивный дизайн за 30 минут</h3>
+                <h3 id="first-article__title">
+                  Как создать адаптивный дизайн за 30 минут
+                </h3>
               </header>
-              <p>
+              <p id="first-article__content">
                 В этой статье я расскажу о ключевых принципах создания мобильных
                 интерфейсов, которые одинаково хорошо выглядят на всех
                 устройствах. Вы узнаете о медиа-запросах, гибких сетках и
                 практических примерах кода, которые можно использовать прямо
                 сейчас.
               </p>
-              <time datetime="2024-12-15">Опубликовано: 15 декабря 2024</time>
+              <time datetime="2024-12-15" id="first-article__date"
+                >Опубликовано: 15 декабря 2024</time
+              >
             </div>
           </article>
 
-          <div id="small-cards-placeholder" class="blog__small-cards-container">
+          <div
+            id="blog__small-cards-placeholder"
+            class="blog__small-cards-container"
+          >
             <template id="small-card-template">
               <article class="card card--small">
                 <img
@@ -65,8 +73,13 @@
                 />
 
                 <div class="card__text">
-                  <p>Minim anim pariatur magna duis sit et dolor incididunt</p>
-                  <time datetime="2024-12-15"
+                  <h4 class="card__title" id="small-card-template__title">
+                    Minim anim pariatur magna duis sit et dolor incididunt
+                  </h4>
+                  <time
+                    class="card__date"
+                    datetime="2024-12-15"
+                    id="small-card-template__date"
                     >Опубликовано: 15 декабря 2024</time
                   >
                 </div>
@@ -81,11 +94,72 @@
           </div>
         </section>
       </section>
+
+      <div class="admin-menu-wrapper">
+        <div class="admin-menu__trigger"></div>
+
+        <div class="admin-panel">
+          <div class="admin-panel__content">
+            <img
+              id="open-button-for-add-post"
+              class="admin-panel__button"
+              src="src/assets/icons/post_add.svg"
+              alt=""
+              title="Добавить статью"
+            />
+            <img
+              id="open-button-for-stats"
+              class="admin-panel__button"
+              src="src/assets/icons/stats.svg"
+              alt=""
+              title="Просмотр статистики"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- для добавления статей -->
+      <div id="dialog-container" class="dialog-container">
+        <div class="dialog">
+          <img
+            id="close-button-for-dialog"
+            class="dialog__close-button"
+            src="src/assets/icons/icons8-крестик-78.png"
+            alt=""
+          />
+          <div class="dialog__content">
+            <div id="form-bright-placeholder"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- для статистики -->
+      <div id="stats-dialog-container" class="stats-dialog-container">
+        <div class="stats-dialog">
+          <img
+            id="close-button-for-stats-dialog"
+            class="stats-dialog__close-button"
+            src="src/assets/icons/icons8-крестик-78.png"
+            alt=""
+          />
+          <h3 class="stats-dialog__header">Статистика страницы</h3>
+          <div class="stats-dialog__content">
+            <div class="stats-dialog__metrics">
+              <div class="metric-section" id="posts-count"></div>
+              <div class="metric-section" id="comments-count">
+                <h4 class="metric-section__title">Комментарии:</h4>
+                <p class="metric-section__metric">0</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <div class="footer-container" id="footer-placeholder"></div>
 
     <script type="module" src="src/scripts/blog-script.js"></script>
     <script type="module" src="src/scripts/include.js"></script>
+    <script type="module" src="src/scripts/script.js"></script>
   </body>
 </html>

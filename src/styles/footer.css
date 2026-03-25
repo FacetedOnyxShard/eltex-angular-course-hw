@@ -4,13 +4,15 @@
 
   margin-top: 65px;
   position: relative;
+
+  z-index: 1;
 }
 
 .footer {
   color: var(--color-white-on-dark);
 
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   flex: 1;
 
   gap: 100px;
@@ -49,6 +51,7 @@
 }
 
 [class$="--bouncing"]:hover {
+  transition: all 0.3s ease;
   transform: translateY(-5px);
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
 }

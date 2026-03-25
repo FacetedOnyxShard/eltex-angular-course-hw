@@ -9,7 +9,7 @@
   flex-direction: column;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 2;
 }
 
 .header__content {
@@ -20,7 +20,7 @@
   flex: 1;
   padding: 0 var(--page-padding);
 
-  z-index: 1000;
+  z-index: 3;
 
   background-color: var(--color-bright-bg);
 }
@@ -58,6 +58,14 @@
 .header__element:hover {
   font-weight: var(--font-bold);
   color: var(--color-green-dark);
+}
+
+.header__element--active {
+  font-weight: var(--font-bold);
+  color: var(--color-green-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
 }
 
 .contact {

@@ -55,6 +55,8 @@
   min-width: 0;
 
   object-fit: cover;
+
+  border-radius: 5px;
 }
 
 .blog__small-cards-container {
@@ -91,8 +93,17 @@
 
   color: var(--color-green-dark);
   border: 1px solid var(--color-green-dark);
-  background-color: var(--color-white-bg);
+  background-color: var(--color-bright-bg);
 
   padding: 12px 55px;
   border-radius: 5px;
+}
+
+.card__title {
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.card__date {
+  font-size: 16px;
 }
