@@ -14,6 +14,29 @@
 .card {
   display: flex;
   flex-direction: column;
+
+  position: relative;
+}
+
+.card__delete-article-button {
+  display: none;
+
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  cursor: pointer;
+}
+
+.card:hover .card__delete-article-button {
+  display: inline-flex;
+}
+
+.card__delete-article-button:hover {
+  filter: brightness(0.8);
 }
 
 .card--big {
