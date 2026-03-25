@@ -271,7 +271,7 @@ function convertSmallCardToBig(smallCard) {
   const clone = bigCard.cloneNode(true);
 
   const title = smallCard.querySelector(".card__title").textContent;
-  const date = smallCard.querySelector(".card__date").textContent;
+  const dateText = smallCard.querySelector(".card__date").textContent;
 
   const bigTitle = clone.querySelector("#first-article__title");
   const bigDate = clone.querySelector("#first-article__date");
@@ -291,24 +291,32 @@ function deleteArticleLogic(card) {
 }
 
 function deleteArticleHandler() {
-  const deleteButtonFirstArticle = document.querySelector(".card.card--big");
+  const postsSection = document.getElementById("posts-section");
 
-  if (deleteButtonFirstArticle) {
-    deleteButtonFirstArticle.addEventListener("click", () => {
-      const card = deleteButtonFirstArticle.closest(".card");
-      deleteArticleLogic(card);
-    });
-  }
+  postsSection.addEventListener("click", (e) => {
+    const deleteButton = e.target.closest(".card__delete-article-button");
 
-  const deleteButtonOtherCards = document.querySelectorAll(
-    ".card__delete-article-button",
-  );
+    if (!deleteButton) return;
 
-  deleteButtonOtherCards.forEach((deleteButtonSmallCard, idx) => {
-    deleteButtonSmallCard.addEventListener("click", function () {
-      const card = deleteButtonSmallCard.closest("[class='card card--small']");
-      deleteArticleLogic(card);
-    });
+    const card = deleteButton.closest(".card");
+
+    if (!card) return;
+
+    if (card.classList.contains("card--big")) {
+      const nextSmallCard = postsSection.querySelector(".card--small");
+
+      if (nextSmallCard) {
+        const newBigCard = convertSmallCardToBig(nextSmallCard);
+
+        postsSection.prepend(newBigCard);
+        card.remove();
+        nextSmallCard.remove();
+      }
+    }
+
+    card.remove();
+
+    calculatePostsCount();
   });
 }
 
