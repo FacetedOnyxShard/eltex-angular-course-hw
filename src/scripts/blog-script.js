@@ -24,7 +24,7 @@ function formatDate(date) {
 
 // logic functions
 function addElementsToBlog() {
-  const container = document.getElementById("small-cards-placeholder");
+  const container = document.getElementById("blog__small-cards-placeholder");
   const template = document.getElementById("small-card-template");
 
   for (let i = 0; i < 6; ++i) {
@@ -55,24 +55,24 @@ function commonDialogEvents(dialog, otherDialog, openButton, closeButton) {
   });
 }
 
-function addArticle() {
-  const form = document.getElementById("form--bright");
+// function addArticle() {
+//   const form = document.getElementById("form--bright");
 
-  form.onsubmit = (e) => {
-    e.preventDefault();
+//   form.onsubmit = (e) => {
+//     e.preventDefault();
 
-    const newArticle = {
-      id: crypto.randomUUID(),
-      image: "../empty-picture.png",
-      title: document.getElementById("form-title-input").value,
-      content: document.getElementById("form-article-content").value,
-      publicationDate: new Date(),
-    };
+//     const newArticle = {
+//       id: crypto.randomUUID(),
+//       image: "../empty-picture.png",
+//       title: document.getElementById("form-title-input").value,
+//       content: document.getElementById("form-article-content").value,
+//       publicationDate: new Date(),
+//     };
 
-    localStorage.setItem("articles", JSON.stringify(newArticle));
-    form.reset();
-  };
-}
+//     localStorage.setItem("articles", JSON.stringify(newArticle));
+//     form.reset();
+//   };
+// }
 
 function initAddPostDialogLogic() {
   const dialog = document.getElementById("dialog-container");
@@ -113,8 +113,8 @@ export function waitForDialogElements() {
     const dialog = document.getElementById("dialog-container");
     const openButton = document.getElementById("open-button-for-add-post");
 
-    const statsDialog = document.getElementById("dialog-container");
-    const statsOpenButton = document.getElementById("open-button-for-add-post");
+    const statsDialog = document.getElementById("stats-dialog-container");
+    const statsOpenButton = document.getElementById("open-button-for-stats");
 
     if (dialog && openButton && statsDialog && statsOpenButton) {
       if (initAddPostDialogLogic() && initStatsDialogLogic()) {
@@ -144,11 +144,11 @@ function createSmallCardElement(article) {
   const template = document.getElementById("small-card-template");
   const clone = template.content.cloneNode(true);
 
-  const title = clone.getElementById("small-card-template__title");
-  const date = clone.getElementById("small-card-template__date");
+  const title = clone.querySelector(".card__title");
+  const date = clone.querySelector(".card__date");
 
   title.textContent = article.title;
-  date.textContent = formatDate(article.date);
+  date.textContent = formatDate(article.publicationDate);
 
   return clone;
 }
@@ -156,14 +156,14 @@ function createSmallCardElement(article) {
 function createBigCardElement(article) {
   const bigCard = document.getElementById("first-article");
 
-  const clone = document.bigCard.cloneNode(true);
+  const clone = bigCard.cloneNode(true);
 
-  const image = clone.getElementById("first-article__image");
-  const title = clone.getElementById("first-article__title");
-  const content = clone.getElementById("first-article__content");
-  const date = clone.getElementById("first-article__date");
+  const image = clone.querySelector("#first-article__image");
+  const title = clone.querySelector("#first-article__title");
+  const content = clone.querySelector("#first-article__content");
+  const date = clone.querySelector("#first-article__date");
 
-  image.textContent = article.image;
+  image.src = article.image;
   title.textContent = article.title;
   content.textContent = article.content;
   date.textContent = `Опубликовано: ${formatDate(article.publicationDate)}`;
@@ -179,8 +179,67 @@ function saveArticleToLocalStorage(article) {
 }
 
 function getArticlesFromLocalStorage() {
-  const articles = JSON.parse(localStorage.getItem("article")) || [];
+  const articles = JSON.parse(localStorage.getItem("articles")) || [];
   return articles;
+}
+
+function convertBigCardToSmall() {
+  const bigCard = document.getElementById("first-article");
+
+  const clone = bigCard.cloneNode(true);
+
+  const image = clone.querySelector("#first-article__image");
+  const title = clone.querySelector("#first-article__title");
+  const content = clone.querySelector("#first-article__content");
+  const date = clone.querySelector("#first-article__date");
+
+  const article = {
+    image: image.src,
+    title: title.textContent,
+    content: content.textContent,
+    publicationDate: new Date(), // дата текущая для упрощения
+    // потом просто буду искать большую карту по id
+    // или по положению в списке
+  };
+
+  return createSmallCardElement(article);
+}
+
+function addPostToPage(article) {
+  const postsSection = document.getElementById("posts-section");
+  const currentBigCard = document.getElementById("first-article");
+  const smallCardsContainer = document.getElementById(
+    "blog__small-cards-placeholder",
+  );
+
+  const newBigCard = createBigCardElement(article);
+
+  if (currentBigCard) {
+    const oldBigCardAsSmall = convertBigCardToSmall();
+
+    currentBigCard.remove();
+
+    postsSection.prepend(newBigCard);
+
+    smallCardsContainer.insertBefore(
+      oldBigCardAsSmall,
+      smallCardsContainer.firstElementChild,
+    );
+  }
+
+  calculatePostsCount();
+}
+
+function addMockPost() {
+  const mockArticle = {
+    id: crypto.randomUUID(),
+    image: "src/assets/images/empty-picture.png",
+    title: `Новый пост от ${new Date().toLocaleDateString()}`,
+    content: "Это свежая статья, которая только что была добавлена!",
+    publicationDate: new Date(),
+  };
+
+  addPostToPage(mockArticle);
 }
 
 function loadArticles() {}
@@ -190,8 +249,13 @@ async function main() {
 
   document.addEventListener("DOMContentLoaded", () => {
     waitForDialogElements();
+
     loadArticles();
     calculatePostsCount();
+
+    for (let i = 0; i < 3; ++i) {
+      addMockPost();
+    }
   });
 }
 

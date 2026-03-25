@@ -12,8 +12,6 @@
 
   justify-content: center;
   align-items: center;
-
-  z-index: 6;
 }
 
 .dialog {
@@ -100,6 +98,8 @@
 
 .show-dialog {
   display: flex;
+
+  z-index: 6;
 }
 
 .stats-dialog__header {
