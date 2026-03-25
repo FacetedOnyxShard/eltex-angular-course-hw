@@ -55,25 +55,6 @@ function commonDialogEvents(dialog, otherDialog, openButton, closeButton) {
   });
 }
 
-// function addArticle() {
-//   const form = document.getElementById("form--bright");
-
-//   form.onsubmit = (e) => {
-//     e.preventDefault();
-
-//     const newArticle = {
-//       id: crypto.randomUUID(),
-//       image: "../empty-picture.png",
-//       title: document.getElementById("form-title-input").value,
-//       content: document.getElementById("form-article-content").value,
-//       publicationDate: new Date(),
-//     };
-
-//     localStorage.setItem("articles", JSON.stringify(newArticle));
-//     form.reset();
-//   };
-// }
-
 function initAddPostDialogLogic() {
   const dialog = document.getElementById("dialog-container");
   const statsDialog = document.getElementById("stats-dialog-container");
@@ -81,6 +62,8 @@ function initAddPostDialogLogic() {
   const closeButton = document.getElementById("close-button-for-dialog");
 
   commonDialogEvents(dialog, statsDialog, openButton, closeButton);
+
+  const form = document.getElementById("form--bright");
   // кнопки на форме
   const addButton = document.getElementById("dialog-form-add-post-button");
   const cancelButton = document.getElementById("dialog-form-cancel-button");
@@ -88,9 +71,8 @@ function initAddPostDialogLogic() {
   if (!dialog || !openButton || !closeButton || !addButton || !cancelButton)
     return false;
 
-  // addArticle();
-
   cancelButton.addEventListener("click", () => {
+    form.reset();
     closeDialog(dialog);
   });
 
@@ -156,6 +138,10 @@ function createSmallCardElement(article) {
 function createBigCardElement(article) {
   const bigCard = document.getElementById("first-article");
 
+  if (!bigCard) {
+    return null;
+  }
+
   const clone = bigCard.cloneNode(true);
 
   const image = clone.querySelector("#first-article__image");
@@ -186,6 +172,10 @@ function getArticlesFromLocalStorage() {
 function convertBigCardToSmall() {
   const bigCard = document.getElementById("first-article");
 
+  if (!bigCard) {
+    return null;
+  }
+
   const clone = bigCard.cloneNode(true);
 
   const image = clone.querySelector("#first-article__image");
@@ -211,6 +201,10 @@ function addPostToPage(article) {
   const smallCardsContainer = document.getElementById(
     "blog__small-cards-placeholder",
   );
+
+  if (!currentBigCard) {
+    return;
+  }
 
   const newBigCard = createBigCardElement(article);
 
@@ -244,6 +238,80 @@ function addMockPost() {
 
 function loadArticles() {}
 
+function addArticleHandler() {
+  const form = document.getElementById("form--bright");
+
+  if (!form) {
+    setTimeout(addArticleHandler, 100);
+    return;
+  }
+
+  form.onsubmit = (e) => {
+    e.preventDefault();
+
+    const newArticle = {
+      id: crypto.randomUUID(),
+      image: "src/assets/images/empty-picture.png",
+      title: document.getElementById("form-title-input").value,
+      content: document.getElementById("form-article-content").value,
+      publicationDate: new Date(),
+    };
+
+    addPostToPage(newArticle);
+
+    form.reset();
+  };
+}
+
+function convertSmallCardToBig(smallCard) {
+  const bigCard = document.getElementById("first-article");
+
+  if (!bigCard) return null;
+
+  const clone = bigCard.cloneNode(true);
+
+  const title = smallCard.querySelector(".card__title").textContent;
+  const date = smallCard.querySelector(".card__date").textContent;
+
+  const bigTitle = clone.querySelector("#first-article__title");
+  const bigDate = clone.querySelector("#first-article__date");
+  const bigImage = clone.querySelector("#first-article__image");
+  const bigContent = clone.querySelector("#first-article__content");
+
+  bigTitle.textContent = title || "Без названия";
+  bigDate.textContent = `Опубликовано: ${dateText || ""}`;
+  bigImage.src = "src/assets/images/empty-picture.png";
+  bigContent.textContent = "Содержание статьи...";
+
+  return clone;
+}
+
+function deleteArticleLogic(card) {
+  card.remove();
+}
+
+function deleteArticleHandler() {
+  const deleteButtonFirstArticle = document.querySelector(".card.card--big");
+
+  if (deleteButtonFirstArticle) {
+    deleteButtonFirstArticle.addEventListener("click", () => {
+      const card = deleteButtonFirstArticle.closest(".card");
+      deleteArticleLogic(card);
+    });
+  }
+
+  const deleteButtonOtherCards = document.querySelectorAll(
+    ".card__delete-article-button",
+  );
+
+  deleteButtonOtherCards.forEach((deleteButtonSmallCard, idx) => {
+    deleteButtonSmallCard.addEventListener("click", function () {
+      const card = deleteButtonSmallCard.closest("[class='card card--small']");
+      deleteArticleLogic(card);
+    });
+  });
+}
+
 async function main() {
   addElementsToBlog();
 
@@ -256,6 +324,9 @@ async function main() {
     for (let i = 0; i < 3; ++i) {
       addMockPost();
     }
+
+    addArticleHandler();
+    deleteArticleHandler();
   });
 }
 
