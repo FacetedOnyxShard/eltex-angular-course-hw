@@ -65,3 +65,8 @@
 .post__title {
   margin-bottom: 8px;
 }
+
+.browse-button-container {
+  display: flex;
+  justify-content: center;
+}
