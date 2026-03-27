@@ -37,7 +37,7 @@
             <p class="placeholder__text">Нет статей</p>
           </div>
 
-          <template>
+          <template id="first-article-template">
             <article class="card card--big" id="first-article">
               <img
                 class="card__delete-article-button"
@@ -55,18 +55,21 @@
 
               <div class="card__text card__text--big" id="first-article">
                 <header>
-                  <h3 id="first-article__title">
+                  <h3 class="card__title" id="first-article__title">
                     Как создать адаптивный дизайн за 30 минут
                   </h3>
                 </header>
-                <p id="first-article__content">
+                <p class="card__paragraph" id="first-article__content">
                   В этой статье я расскажу о ключевых принципах создания
                   мобильных интерфейсов, которые одинаково хорошо выглядят на
                   всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и
                   практических примерах кода, которые можно использовать прямо
                   сейчас.
                 </p>
-                <time datetime="2024-12-15" id="first-article__date"
+                <time
+                  class="card__publication-date"
+                  datetime="2024-12-15"
+                  id="first-article__date"
                   >Опубликовано: 15 декабря 2024</time
                 >
               </div>

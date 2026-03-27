@@ -143,7 +143,21 @@ function createBigCardElement(article) {
   const bigCard = document.getElementById("first-article");
 
   if (!bigCard) {
-    return null;
+    const template = document.getElementById("first-article-template");
+    const clone = template.content.cloneNode(true);
+
+    const cloneImg = clone.querySelector(".card__image");
+    const cloneTitle = clone.querySelector(".card__title");
+    const cloneContent = clone.querySelector(".card__paragraph");
+    const cloneDate = clone.querySelector(".card__publication-date");
+
+    cloneImg.src = article.image;
+    cloneTitle.textContent = article.title;
+    cloneContent.textContent = article.content;
+    cloneDate.textContent = `Опубликовано: ${formatDate(article.publicationDate)}`;
+    cloneDate.setAttribute("datetime", formatDate(article.publicationDate));
+
+    return clone;
   }
 
   const clone = bigCard.cloneNode(true);
@@ -162,22 +176,27 @@ function createBigCardElement(article) {
   return clone;
 }
 
-function saveArticleToLocalStorage(article) {
-  let articles = getAllArticlesFromLocalStorage();
-  articles.push(article);
-  localStorage.setItem("articles", JSON.stringify(articles));
-}
-
 function getArticlesFromLocalStorage() {
   const articles = JSON.parse(localStorage.getItem("articles")) || [];
-  return articles;
+
+  return articles.map((article) => ({
+    ...article,
+    publicationDate: new Date(article.publicationDate),
+  }));
+}
+
+function saveArticleToLocalStorage(article) {
+  let articles = getArticlesFromLocalStorage();
+  articles.unshift(article);
+  localStorage.setItem("articles", JSON.stringify(articles));
 }
 
 function convertBigCardToSmall() {
   const bigCard = document.getElementById("first-article");
 
   if (!bigCard) {
-    return null;
+    const firstBigCardTemplate = null;
+    return firstBigCard;
   }
 
   const clone = bigCard.cloneNode(true);
@@ -185,15 +204,14 @@ function convertBigCardToSmall() {
   const image = clone.querySelector("#first-article__image");
   const title = clone.querySelector("#first-article__title");
   const content = clone.querySelector("#first-article__content");
-  const date = clone.querySelector("#first-article__date");
+
+  const articles = getArticlesFromLocalStorage();
 
   const article = {
     image: image.src,
     title: title.textContent,
     content: content.textContent,
-    publicationDate: new Date(), // дата текущая для упрощения
-    // потом просто буду искать большую карту по id
-    // или по положению в списке
+    publicationDate: articles[0].publicationDate,
   };
 
   return createSmallCardElement(article);
@@ -207,6 +225,9 @@ function addPostToPage(article) {
   );
 
   if (!currentBigCard) {
+    const firstBigCard = createBigCardElement(article);
+    postsSection.prepend(firstBigCard);
+    calculatePostsCount();
     return;
   }
 
@@ -228,19 +249,13 @@ function addPostToPage(article) {
   calculatePostsCount();
 }
 
-function addMockPost() {
-  const mockArticle = {
-    id: crypto.randomUUID(),
-    image: "src/assets/images/empty-picture.png",
-    title: `Новый пост от ${new Date().toLocaleDateString()}`,
-    content: "Это свежая статья, которая только что была добавлена!",
-    publicationDate: new Date(),
-  };
+function loadArticles() {
+  const articles = getArticlesFromLocalStorage();
 
-  addPostToPage(mockArticle);
+  articles.forEach((article) => {
+    addPostToPage(article);
+  });
 }
-
-function loadArticles() {}
 
 function addArticleHandler() {
   const form = document.getElementById("form--bright");
@@ -262,6 +277,7 @@ function addArticleHandler() {
     };
 
     addPostToPage(newArticle);
+    saveArticleToLocalStorage(newArticle);
 
     form.reset();
   };
@@ -292,6 +308,8 @@ function convertSmallCardToBig(smallCard) {
 
 function deleteArticleLogic(card) {
   card.remove();
+  calculatePostsCount();
+  toggleArticlePlaceholder();
 }
 
 function deleteArticleHandler() {
@@ -313,18 +331,15 @@ function deleteArticleHandler() {
         const newBigCard = convertSmallCardToBig(nextSmallCard);
 
         postsSection.prepend(newBigCard);
-        card.remove();
         nextSmallCard.remove();
       }
     }
 
-    card.remove();
-
-    calculatePostsCount();
+    deleteArticleLogic(card);
   });
 }
 
-function addArticlePlaceholder() {
+function toggleArticlePlaceholder() {
   const postContainer = document.getElementById("posts-section");
   const placeholder = document.getElementById("article-placeholder");
 
@@ -336,21 +351,18 @@ function addArticlePlaceholder() {
 }
 
 async function main() {
-  addArticlePlaceholder();
-
   document.addEventListener("DOMContentLoaded", () => {
     waitForDialogElements();
 
     loadArticles();
     calculatePostsCount();
-
-    for (let i = 0; i < 3; ++i) {
-      addMockPost();
-    }
+    toggleArticlePlaceholder();
 
     addArticleHandler();
     deleteArticleHandler();
   });
+
+  console.log(getArticlesFromLocalStorage());
 }
 
 main().catch(console.error);
