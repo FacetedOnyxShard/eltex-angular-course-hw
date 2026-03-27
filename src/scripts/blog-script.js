@@ -111,14 +111,18 @@ export function waitForDialogElements() {
   });
 }
 
-function calculatePostsCount() {
+function getPostsCount() {
   const postContainer = document.getElementById("posts-section");
   const articles = postContainer.querySelectorAll("article");
 
+  return articles.length;
+}
+
+function calculatePostsCount() {
   const metricContainer = document.getElementById("posts-count");
   metricContainer.innerHTML = `
     <h4 class="metric-section__title">Всего статей:</h4>
-    <p class="metric-section__metric">${articles.length}</p>
+    <p class="metric-section__metric">${getPostsCount()}</p>
   `;
 }
 
@@ -139,7 +143,24 @@ function createBigCardElement(article) {
   const bigCard = document.getElementById("first-article");
 
   if (!bigCard) {
-    return null;
+    const template = document.getElementById("first-article-template");
+    const clone = template.content.cloneNode(true);
+
+    const cloneImg = clone.querySelector(".card__image");
+    const cloneTitle = clone.querySelector(".card__title");
+    const cloneContent = clone.querySelector(".card__paragraph");
+    const cloneDate = clone.querySelector(".card__publication-date");
+
+    cloneImg.src = article.image;
+    cloneTitle.textContent = article.title;
+    cloneContent.textContent = article.content;
+    cloneDate.textContent = `Опубликовано: ${formatDate(article.publicationDate)}`;
+    cloneDate.setAttribute("datetime", formatDate(article.publicationDate));
+
+    const card = clone.querySelector(".card");
+    card.setAttribute("data-article-id", article.id);
+
+    return clone;
   }
 
   const clone = bigCard.cloneNode(true);
@@ -155,18 +176,30 @@ function createBigCardElement(article) {
   date.textContent = `Опубликовано: ${formatDate(article.publicationDate)}`;
   date.setAttribute("datetime", formatDate(article.publicationDate));
 
-  return clone;
-}
+  clone.setAttribute("data-article-id", article.id);
 
-function saveArticleToLocalStorage(article) {
-  let articles = getAllArticlesFromLocalStorage();
-  articles.push(article);
-  localStorage.setItem("articles", JSON.stringify(articles));
+  return clone;
 }
 
 function getArticlesFromLocalStorage() {
   const articles = JSON.parse(localStorage.getItem("articles")) || [];
-  return articles;
+
+  return articles.map((article) => ({
+    ...article,
+    publicationDate: new Date(article.publicationDate),
+  }));
+}
+
+function saveArticleToLocalStorage(article) {
+  let articles = getArticlesFromLocalStorage();
+  articles.push(article);
+  localStorage.setItem("articles", JSON.stringify(articles));
+}
+
+function deleteArticleFromLocalStorage(articleId) {
+  let articles = getArticlesFromLocalStorage();
+  articles = articles.filter((article) => article.id !== articleId);
+  localStorage.setItem("articles", JSON.stringify(articles));
 }
 
 function convertBigCardToSmall() {
@@ -181,18 +214,21 @@ function convertBigCardToSmall() {
   const image = clone.querySelector("#first-article__image");
   const title = clone.querySelector("#first-article__title");
   const content = clone.querySelector("#first-article__content");
-  const date = clone.querySelector("#first-article__date");
 
-  const article = {
+  const articleId = bigCard.dataset.articleId;
+
+  const articles = getArticlesFromLocalStorage();
+  const article = articles.find((a) => a.id === articleId);
+
+  const newArticle = {
+    id: article.id,
     image: image.src,
     title: title.textContent,
     content: content.textContent,
-    publicationDate: new Date(), // дата текущая для упрощения
-    // потом просто буду искать большую карту по id
-    // или по положению в списке
+    publicationDate: article.publicationDate,
   };
 
-  return createSmallCardElement(article);
+  return createSmallCardElement(newArticle);
 }
 
 function addPostToPage(article) {
@@ -203,12 +239,18 @@ function addPostToPage(article) {
   );
 
   if (!currentBigCard) {
+    const firstBigCard = createBigCardElement(article);
+    postsSection.prepend(firstBigCard);
+    calculatePostsCount();
     return;
   }
 
   const newBigCard = createBigCardElement(article);
 
   if (currentBigCard) {
+    const articles = getArticlesFromLocalStorage();
+
+    const oldBigCardId = currentBigCard.dataset.articleId;
     const oldBigCardAsSmall = convertBigCardToSmall();
 
     currentBigCard.remove();
@@ -219,24 +261,23 @@ function addPostToPage(article) {
       oldBigCardAsSmall,
       smallCardsContainer.firstElementChild,
     );
+    smallCardsContainer.firstElementChild.setAttribute(
+      "data-article-id",
+      oldBigCardId,
+    );
   }
 
   calculatePostsCount();
+  toggleArticlePlaceholder();
 }
 
-function addMockPost() {
-  const mockArticle = {
-    id: crypto.randomUUID(),
-    image: "src/assets/images/empty-picture.png",
-    title: `Новый пост от ${new Date().toLocaleDateString()}`,
-    content: "Это свежая статья, которая только что была добавлена!",
-    publicationDate: new Date(),
-  };
+function loadArticles() {
+  const articles = getArticlesFromLocalStorage();
 
-  addPostToPage(mockArticle);
+  articles.forEach((article) => {
+    addPostToPage(article);
+  });
 }
-
-function loadArticles() {}
 
 function addArticleHandler() {
   const form = document.getElementById("form--bright");
@@ -258,6 +299,7 @@ function addArticleHandler() {
     };
 
     addPostToPage(newArticle);
+    saveArticleToLocalStorage(newArticle);
 
     form.reset();
   };
@@ -270,24 +312,30 @@ function convertSmallCardToBig(smallCard) {
 
   const clone = bigCard.cloneNode(true);
 
-  const title = smallCard.querySelector(".card__title").textContent;
-  const dateText = smallCard.querySelector(".card__date").textContent;
-
   const bigTitle = clone.querySelector("#first-article__title");
   const bigDate = clone.querySelector("#first-article__date");
   const bigImage = clone.querySelector("#first-article__image");
   const bigContent = clone.querySelector("#first-article__content");
 
-  bigTitle.textContent = title || "Без названия";
-  bigDate.textContent = `Опубликовано: ${dateText || ""}`;
-  bigImage.src = "src/assets/images/empty-picture.png";
-  bigContent.textContent = "Содержание статьи...";
+  const articles = getArticlesFromLocalStorage();
+  const firstSmallArticle = articles[articles.length - 2];
+
+  bigTitle.textContent = firstSmallArticle.title;
+  bigDate.textContent = `Опубликовано: ${formatDate(firstSmallArticle.publicationDate)}`;
+  bigImage.src = firstSmallArticle.image;
+  bigContent.textContent = firstSmallArticle.content;
+
+  const id = smallCard.dataset.articleId;
+  clone.setAttribute("data-article-id", id);
 
   return clone;
 }
 
-function deleteArticleLogic(card) {
+function deleteArticleLogic(card, articleId) {
   card.remove();
+  deleteArticleFromLocalStorage(articleId);
+  calculatePostsCount();
+  toggleArticlePlaceholder();
 }
 
 function deleteArticleHandler() {
@@ -299,43 +347,51 @@ function deleteArticleHandler() {
     if (!deleteButton) return;
 
     const card = deleteButton.closest(".card");
+    const articleId = card.dataset.articleId;
 
     if (!card) return;
 
-    if (card.classList.contains("card--big")) {
+    const articles = getArticlesFromLocalStorage();
+    const isLastArticle = articles.length === 1;
+
+    if (card.classList.contains("card--big") && !isLastArticle) {
       const nextSmallCard = postsSection.querySelector(".card--small");
 
       if (nextSmallCard) {
         const newBigCard = convertSmallCardToBig(nextSmallCard);
 
         postsSection.prepend(newBigCard);
-        card.remove();
         nextSmallCard.remove();
       }
     }
 
-    card.remove();
-
-    calculatePostsCount();
+    deleteArticleLogic(card, articleId);
   });
 }
 
-async function main() {
-  addElementsToBlog();
+function toggleArticlePlaceholder() {
+  const placeholder = document.getElementById("article-placeholder");
 
+  if (getPostsCount() === 0) {
+    placeholder.classList.remove("display-none");
+  } else {
+    placeholder.classList.add("display-none");
+  }
+}
+
+async function main() {
   document.addEventListener("DOMContentLoaded", () => {
     waitForDialogElements();
 
     loadArticles();
     calculatePostsCount();
-
-    for (let i = 0; i < 3; ++i) {
-      addMockPost();
-    }
+    toggleArticlePlaceholder();
 
     addArticleHandler();
     deleteArticleHandler();
   });
+
+  console.log(getArticlesFromLocalStorage());
 }
 
 main().catch(console.error);

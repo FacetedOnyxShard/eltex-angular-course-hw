@@ -21,10 +21,10 @@
 
     <main class="main-content">
       <section class="blog">
-        <section class="blog__hello-section">
-          <div>
-            <h2>My blogs</h2>
-            <p>
+        <section class="hello-section">
+          <div class="hello-section__text">
+            <h2 class="hello-section__title">My blogs</h2>
+            <p class="hello-section__paragraph">
               Lorem occaecat proident excepteur commodo et nulla eiusmod. Elit
               esse aute officia dolor elit aute
             </p>
@@ -33,39 +33,48 @@
         </section>
 
         <section class="posts-section" id="posts-section">
-          <article class="card card--big" id="first-article">
-            <img
-              class="card__delete-article-button"
-              id="first-article__delete-article-button"
-              src="src/assets/icons/delete.svg"
-              alt=""
-            />
+          <div class="placeholder-container" id="article-placeholder">
+            <p class="placeholder__text">Нет статей</p>
+          </div>
 
-            <img
-              src="src/assets/images/empty-picture.png"
-              alt=""
-              class="card__image"
-              id="first-article__image"
-            />
+          <template id="first-article-template">
+            <article class="card card--big" id="first-article">
+              <img
+                class="card__delete-article-button"
+                id="first-article__delete-article-button"
+                src="src/assets/icons/delete.svg"
+                alt=""
+              />
 
-            <div class="card__text card__text--big" id="first-article">
-              <header>
-                <h3 id="first-article__title">
-                  Как создать адаптивный дизайн за 30 минут
-                </h3>
-              </header>
-              <p id="first-article__content">
-                В этой статье я расскажу о ключевых принципах создания мобильных
-                интерфейсов, которые одинаково хорошо выглядят на всех
-                устройствах. Вы узнаете о медиа-запросах, гибких сетках и
-                практических примерах кода, которые можно использовать прямо
-                сейчас.
-              </p>
-              <time datetime="2024-12-15" id="first-article__date"
-                >Опубликовано: 15 декабря 2024</time
-              >
-            </div>
-          </article>
+              <img
+                src="src/assets/images/empty-picture.png"
+                alt=""
+                class="card__image"
+                id="first-article__image"
+              />
+
+              <div class="card__text card__text--big" id="first-article">
+                <header>
+                  <h3 class="card__title" id="first-article__title">
+                    Как создать адаптивный дизайн за 30 минут
+                  </h3>
+                </header>
+                <p class="card__paragraph" id="first-article__content">
+                  В этой статье я расскажу о ключевых принципах создания
+                  мобильных интерфейсов, которые одинаково хорошо выглядят на
+                  всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и
+                  практических примерах кода, которые можно использовать прямо
+                  сейчас.
+                </p>
+                <time
+                  class="card__publication-date"
+                  datetime="2024-12-15"
+                  id="first-article__date"
+                  >Опубликовано: 15 декабря 2024</time
+                >
+              </div>
+            </article>
+          </template>
 
           <div
             id="blog__small-cards-placeholder"
@@ -101,7 +110,7 @@
             </template>
           </div>
 
-          <div class="button-container">
+          <div class="button-container display-none">
             <button class="blog__next-button blog__next-button--bouncing">
               Next
             </button>
