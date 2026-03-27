@@ -379,11 +379,28 @@ function toggleArticlePlaceholder() {
   }
 }
 
+async function loadArticlesWithLoader() {
+  const loader = document.querySelector(".loader-container");
+  const postsSection = document.getElementById("posts-section");
+
+  loader.classList.remove("display-none");
+  loader.classList.add("display-flex");
+  postsSection.classList.add("display-none");
+
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+
+  loadArticles();
+
+  loader.classList.add("display-none");
+  loader.classList.remove("display-flex");
+  postsSection.classList.remove("display-none");
+}
+
 async function main() {
   document.addEventListener("DOMContentLoaded", () => {
     waitForDialogElements();
 
-    loadArticles();
+    loadArticlesWithLoader();
     calculatePostsCount();
     toggleArticlePlaceholder();
 

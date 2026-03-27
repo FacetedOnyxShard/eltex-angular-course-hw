@@ -13,6 +13,7 @@
 @import url("./blog.css");
 @import url("./admin-panel.css");
 @import url("./dialog.css");
+@import url("./loader.css");
 
 * {
   box-sizing: border-box;
