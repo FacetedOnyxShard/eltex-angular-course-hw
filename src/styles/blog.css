@@ -1,9 +1,19 @@
-.blog__hello-section {
+.hello-section {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
   margin-bottom: 70px;
+  gap: 11vw;
+}
+
+.hello-section__title {
+  margin-bottom: 25px;
+}
+
+.hello-section__paragraph {
+  color: var(--color-gray-on-bright);
+  font-size: 20px;
 }
 
 .blog {
@@ -129,4 +139,21 @@
 
 .card__date {
   font-size: 16px;
+}
+
+.placeholder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.placeholder__text {
+  color: var(--color-gray-on-bright);
+  font-size: 16px;
+  font-weight: var(--font-regular);
+}
+
+.display-none {
+  display: none;
 }

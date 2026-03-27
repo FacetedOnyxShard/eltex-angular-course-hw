@@ -111,14 +111,18 @@ export function waitForDialogElements() {
   });
 }
 
-function calculatePostsCount() {
+function getPostsCount() {
   const postContainer = document.getElementById("posts-section");
   const articles = postContainer.querySelectorAll("article");
 
+  return articles.length;
+}
+
+function calculatePostsCount() {
   const metricContainer = document.getElementById("posts-count");
   metricContainer.innerHTML = `
     <h4 class="metric-section__title">Всего статей:</h4>
-    <p class="metric-section__metric">${articles.length}</p>
+    <p class="metric-section__metric">${getPostsCount()}</p>
   `;
 }
 
@@ -320,8 +324,19 @@ function deleteArticleHandler() {
   });
 }
 
+function addArticlePlaceholder() {
+  const postContainer = document.getElementById("posts-section");
+  const placeholder = document.getElementById("article-placeholder");
+
+  if (getPostsCount() === 0) {
+    placeholder.classList.remove("display-none");
+  } else {
+    placeholder.classList.add("display-none");
+  }
+}
+
 async function main() {
-  addElementsToBlog();
+  addArticlePlaceholder();
 
   document.addEventListener("DOMContentLoaded", () => {
     waitForDialogElements();
