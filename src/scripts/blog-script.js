@@ -434,15 +434,7 @@ async function main() {
   document.addEventListener("DOMContentLoaded", async () => {
     waitForDialogElements();
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    loadArticles();
-=======
     await loadArticlesWithLoader();
->>>>>>> Stashed changes
-=======
-    loadArticlesWithLoader();
->>>>>>> a5f542f5b3f512f8ab8f2bd4e67ae651155c81dd
     calculatePostsCount();
     toggleArticlePlaceholder();
 
