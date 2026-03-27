@@ -274,9 +274,16 @@ function addPostToPage(article) {
 function loadArticles() {
   const articles = getArticlesFromLocalStorage();
 
+  if (articles.length === 0) {
+    toggleArticlePlaceholder();
+    return;
+  }
+
   articles.forEach((article) => {
     addPostToPage(article);
   });
+
+  toggleArticlePlaceholder();
 }
 
 async function showLoader() {
@@ -419,6 +426,8 @@ async function loadArticlesWithLoader() {
   loader.classList.add("display-none");
   loader.classList.remove("display-flex");
   postsSection.classList.remove("display-none");
+
+  toggleArticlePlaceholder();
 }
 
 function disableForm(disabled) {
@@ -435,6 +444,7 @@ async function main() {
     waitForDialogElements();
 
     await loadArticlesWithLoader();
+
     calculatePostsCount();
     toggleArticlePlaceholder();
 
