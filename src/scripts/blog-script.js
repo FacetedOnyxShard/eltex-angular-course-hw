@@ -279,6 +279,23 @@ function loadArticles() {
   });
 }
 
+async function showLoader() {
+  const loader = document.getElementById("dialog-for-add-posts__loader");
+  const dialogContent = document.getElementById(
+    "dialog-for-add-posts__content",
+  );
+
+  loader.classList.remove("display-none");
+  loader.classList.add("display-flex");
+  dialogContent.classList.add("display-none");
+
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  loader.classList.add("display-none");
+  loader.classList.remove("display-flex");
+  dialogContent.classList.remove("display-none");
+}
+
 function addArticleHandler() {
   const form = document.getElementById("form--bright");
 
@@ -287,8 +304,13 @@ function addArticleHandler() {
     return;
   }
 
-  form.onsubmit = (e) => {
+  form.onsubmit = async (e) => {
     e.preventDefault();
+
+    disableForm(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // await showLoader();
 
     const newArticle = {
       id: crypto.randomUUID(),
@@ -301,7 +323,9 @@ function addArticleHandler() {
     addPostToPage(newArticle);
     saveArticleToLocalStorage(newArticle);
 
-    form.reset();
+    await form.reset();
+
+    disableForm(false);
   };
 }
 
@@ -380,7 +404,7 @@ function toggleArticlePlaceholder() {
 }
 
 async function loadArticlesWithLoader() {
-  const loader = document.querySelector(".loader-container");
+  const loader = document.getElementById("posts-section__loader");
   const postsSection = document.getElementById("posts-section");
 
   loader.classList.remove("display-none");
@@ -394,6 +418,15 @@ async function loadArticlesWithLoader() {
   loader.classList.add("display-none");
   loader.classList.remove("display-flex");
   postsSection.classList.remove("display-none");
+}
+
+function disableForm(disabled) {
+  const form = document.getElementById("form--bright");
+  const inputs = form.querySelectorAll("input, textarea, button");
+
+  inputs.forEach((input) => {
+    input.disabled = disabled;
+  });
 }
 
 async function main() {
