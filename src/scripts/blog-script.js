@@ -322,6 +322,7 @@ function addArticleHandler() {
 
     addPostToPage(newArticle);
     saveArticleToLocalStorage(newArticle);
+    toggleArticlePlaceholder();
 
     await form.reset();
 
