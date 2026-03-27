@@ -380,10 +380,14 @@ function toggleArticlePlaceholder() {
 }
 
 async function main() {
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
     waitForDialogElements();
 
+<<<<<<< Updated upstream
     loadArticles();
+=======
+    await loadArticlesWithLoader();
+>>>>>>> Stashed changes
     calculatePostsCount();
     toggleArticlePlaceholder();
 
