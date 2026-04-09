@@ -1,9 +1,9 @@
 @import url("./normalize.scss");
 
-// @import url("./vars.scss");
+@import url("./_vars.scss");
 // @import url("./header.scss");
-// @import url("./about-me.scss");
-// @import url("./recently-posts.scss");
+@import url("./about-me.scss");
+@import url("./recently-posts.scss");
 // @import url("./skills.scss");
 // @import url("./job-experience.scss");
 // @import url("./timeline.scss");
