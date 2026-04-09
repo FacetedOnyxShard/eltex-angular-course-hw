@@ -1,0 +1,141 @@
+@import url("./normalize.scss");
+
+// @import url("./vars.scss");
+// @import url("./header.scss");
+// @import url("./about-me.scss");
+// @import url("./recently-posts.scss");
+// @import url("./skills.scss");
+// @import url("./job-experience.scss");
+// @import url("./timeline.scss");
+// @import url("./hobby.scss");
+// @import url("./footer.scss");
+// @import url("./form.scss");
+// @import url("./blog.scss");
+// @import url("./admin-panel.scss");
+// @import url("./dialog.scss");
+// @import url("./loader.scss");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: var(--font-regular);
+  color: var(--color-dark-text-base);
+  background-color: var(--color-bright-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-bold);
+}
+
+h2 {
+  font-size: var(--text-5xl);
+  color: var(--color-dark-on-bright);
+  line-height: 63px;
+}
+
+h3 {
+  font-size: var(--text-4xl);
+  color: var(--color-dark-on-bright);
+  line-height: 29px;
+}
+
+h4 {
+  font-weight: var(--font-regular);
+  font-size: var(--text-xl);
+}
+
+li {
+  font-size: var(--text-base);
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+p,
+time {
+  font-size: var(--text-base);
+}
+
+.mail-view {
+  text-decoration: underline;
+}
+
+.page {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 30px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+  gap: 100px;
+}
+
+.main-content {
+  max-width: calc(100vw - var(--page-padding) * 2);
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.experience-text {
+  margin-bottom: 12px;
+}
+
+.button {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #b9b9b9;
+}
+
+.button:hover {
+  padding: 5px;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: #4e4e4e;
+}
+
+a.button:hover {
+  text-decoration: none;
+}
+
+.article-creator {
+  width: 500px;
+  height: 250px;
+  gap: 14px;
+}
+
+.submit-button {
+  width: 100px;
+}
+
+.line-element {
+  height: 30px;
+}
+
+.visually-hidden {
+  visibility: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
