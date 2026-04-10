@@ -129,7 +129,7 @@
       </div>
 
       <ul class="timeline" id="job-experience-timeline-list">
-        <template id="job-experience-timeline-template-element">
+        <ul class="timeline">
           <li class="timeline__element timeline__element--bottom-hr">
             <div class="record">
               <img
@@ -147,7 +147,41 @@
               </div>
             </div>
           </li>
-        </template>
+          <li class="timeline__element timeline__element--bottom-hr">
+            <div class="record">
+              <img
+                src="assets/images/photographer-logo.png"
+                alt=""
+                class="record__image"
+              />
+              <div class="record__text">
+                <p class="record__period">Bibendum - (2017 - 2020)</p>
+                <h4 class="record__title">Photographer</h4>
+                <p class="record__description">
+                  Ad do dolore cillum dolor et ex non dolor qui. Dolor amet
+                  tempor pariatur officia pariatur et
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="timeline__element timeline__element--bottom-hr">
+            <div class="record">
+              <img
+                src="assets/images/photographer-assistant-logo.png"
+                alt=""
+                class="record__image"
+              />
+              <div class="record__text">
+                <p class="record__period">Adipiscing - (2020 - 2022)</p>
+                <h4 class="record__title">Photographer's Assistant</h4>
+                <p class="record__description">
+                  Ad do dolore cillum dolor et ex non dolor qui. Dolor amet
+                  tempor pariatur officia pariatur et
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
       </ul>
     </section>
 
@@ -193,7 +227,7 @@
         <section class="info-section">
           <h2>Say hello and let's work together !</h2>
           <address>
-            <ul class="">
+            <ul class="_">
               <li>
                 <span>Email: </span>
                 <a
@@ -247,7 +281,46 @@
         </section>
       </section>
 
-      <section class="form-section" id="form-dark-placeholder"></section>
+      <section class="form-section" id="form-dark-placeholder">
+        <form
+          action="#"
+          method="post"
+          onsubmit="event.preventDefault()"
+          class="form"
+        >
+          <div class="form__element">
+            <label for="email-input" class="">Email</label>
+            <input
+              id="email-input"
+              name="email"
+              type="text"
+              placeholder="your email address"
+              class="form__input form__input--dark"
+              required
+            />
+          </div>
+
+          <div class="form__element">
+            <label for="form-content-textarea" class=""
+              >Input your message</label
+            >
+            <textarea
+              name="content"
+              id="form-content-textarea"
+              placeholder="Describe your project"
+              class="form__input form__input--dark form__input--tall"
+              required
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="form__submit-button form__submit-button--bouncing"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
 
       <p class="trademark">© 2026 Brand, Inc</p>
     </footer>

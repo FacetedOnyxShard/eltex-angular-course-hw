@@ -1,19 +1,19 @@
-@use "./normalize";
+@use "normalize";
 
-@use "./vars";
-@use "./header";
-@use "./about-me";
-@use "./recently-posts";
-@use "./skills";
-@use "./job-experience";
-@use "./timeline";
-@use "./hobby";
-@use "./footer";
-@use "./form";
-@use "./blog";
-@use "./admin-panel";
-@use "./dialog";
-@use "./loader";
+@use "vars";
+@use "header";
+@use "about-me";
+@use "recently-posts";
+@use "skills";
+@use "job-experience";
+@use "timeline";
+@use "hobby";
+@use "footer";
+@use "form";
+@use "blog";
+@use "admin-panel";
+@use "dialog";
+@use "loader";
 
 * {
   box-sizing: border-box;
