@@ -1,0 +1,32 @@
+@import "./vars";
+
+.skills {
+  scroll-margin-top: 50px;
+}
+
+.skills__list {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+
+.skills__title {
+  margin-bottom: 50px;
+}
+
+.skills__element {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-regular);
+}
+
+[class$="--bottom-hr"]::after {
+  content: "";
+  display: block;
+
+  height: 2px;
+  width: 100%;
+
+  margin-top: 24px;
+  background-color: var(--color-gray-bright);
+}

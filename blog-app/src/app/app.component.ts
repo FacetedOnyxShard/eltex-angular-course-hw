@@ -6,7 +6,7 @@ import { MainPageComponent } from './ui/pages/main-page/main-page.component';
   selector: 'app-root',
   imports: [RouterOutlet, MainPageComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'blog-app';

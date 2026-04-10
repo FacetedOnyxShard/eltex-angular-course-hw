@@ -1,19 +1,19 @@
-@import url("./normalize.scss");
+@use "./normalize";
 
-// @import url("./vars.css");
-// @import url("./header.css");
-// @import url("./about-me.css");
-// @import url("./recently-posts.css");
-// @import url("./skills.css");
-// @import url("./job-experience.css");
-// @import url("./timeline.css");
-// @import url("./hobby.css");
-// @import url("./footer.css");
-// @import url("./form.css");
-// @import url("./blog.css");
-// @import url("./admin-panel.css");
-// @import url("./dialog.css");
-// @import url("./loader.css");
+@use "./vars";
+@use "./header";
+@use "./about-me";
+@use "./recently-posts";
+@use "./skills";
+@use "./job-experience";
+@use "./timeline";
+@use "./hobby";
+@use "./footer";
+@use "./form";
+@use "./blog";
+@use "./admin-panel";
+@use "./dialog";
+@use "./loader";
 
 * {
   box-sizing: border-box;

@@ -1,0 +1,62 @@
+.footer-container {
+  padding: 55px var(--page-padding);
+  background-color: var(--color-dark-bg);
+
+  margin-top: 65px;
+  position: relative;
+
+  z-index: 1;
+}
+
+.footer {
+  color: var(--color-white-on-dark);
+
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+
+  gap: 100px;
+}
+
+.footer h2 {
+  color: var(--color-white-on-dark);
+  margin: 0;
+}
+
+.footer a {
+  color: var(--color-white-on-dark);
+}
+
+.social-networks {
+  display: flex;
+  gap: 40px;
+}
+
+.offer-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 28px;
+  max-width: 480px;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.social-networks__link {
+  transition: transform 0.3s;
+}
+
+[class$="--bouncing"]:hover {
+  transition: all 0.3s ease;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+}
+
+.trademark {
+  position: absolute;
+  bottom: 15px;
+}
