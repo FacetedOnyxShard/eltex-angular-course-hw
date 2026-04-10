@@ -27,25 +27,25 @@
 
   border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-}
 
-.dialog__close-button {
-  position: absolute;
-  right: 5px;
-  top: 5px;
+  &__close-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
 
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 
-  object-fit: cover;
+    object-fit: cover;
 
-  transition: all 0.3s ease;
-}
+    transition: all 0.3s ease;
+  }
 
-.dialog__close-button:hover {
-  filter: brightness(0.8);
-  transform: scale(1.1);
+  &__close-button:hover {
+    filter: brightness(0.8);
+    transform: scale(1.1);
+  }
 }
 
 .stats-dialog-container {

@@ -10,70 +10,70 @@
   flex-direction: row;
   justify-content: space-between;
   gap: 156px;
-}
 
-.about-me__text-block {
-  align-self: center;
-}
+  &__text-block {
+    align-self: center;
+  }
 
-.about-me__images {
-  position: relative;
-}
+  &__images {
+    position: relative;
+  }
 
-.about-me__main-image {
-  display: block;
-  max-width: none;
-  width: var(--main-image-width);
+  &__main-image {
+    display: block;
+    max-width: none;
+    width: var(--main-image-width);
 
-  height: auto;
-  object-fit: cover;
+    height: auto;
+    object-fit: cover;
 
-  z-index: 1;
-}
+    z-index: 1;
+  }
 
-.about-me__design-element {
-  left: -118px;
-  top: 39%;
-  position: absolute;
-  z-index: 1;
-}
+  &__design-element {
+    left: -118px;
+    top: 39%;
+    position: absolute;
+    z-index: 1;
+  }
 
-.about-me__header {
-  margin-bottom: 35px;
-}
+  &__header {
+    margin-bottom: 35px;
+  }
 
-.about-me__paragraph {
-  color: var(--color-gray-on-bright);
-  margin-bottom: 14px;
-}
+  &__paragraph {
+    color: var(--color-gray-on-bright);
+    margin-bottom: 14px;
+  }
 
-.about-me__link {
-  color: var(--color-green-dark);
+  &__link {
+    color: var(--color-green-dark);
 
-  display: inline-flex;
-  align-items: center;
+    display: inline-flex;
+    align-items: center;
 
-  gap: 12px;
+    gap: 12px;
 
-  transition: all 0.3s ease;
-}
+    transition: all 0.3s ease;
+  }
 
-.about-me__link:hover {
-  filter: brightness(0.8);
-  transform: scale(1.02);
-}
+  &__link:hover {
+    filter: brightness(0.8);
+    transform: scale(1.02);
 
-.about-me__link::after {
-  content: url("/blog-app/public/assets/icons/continue-icon.svg");
-  color: var(--color-green-dark);
+    &::after {
+      filter: brightness(0.8);
+      transform: translateX(5px) scale(1.02);
+    }
+  }
 
-  height: 19px;
-  line-height: 100%;
+  &__link::after {
+    content: url("/assets/icons/continue-icon.svg");
+    color: var(--color-green-dark);
 
-  transition: all 0.3s ease;
-}
+    height: 19px;
+    line-height: 100%;
 
-.about-me__link:hover::after {
-  filter: brightness(0.8);
-  transform: translateX(5px) scale(1.02);
+    transition: all 0.3s ease;
+  }
 }

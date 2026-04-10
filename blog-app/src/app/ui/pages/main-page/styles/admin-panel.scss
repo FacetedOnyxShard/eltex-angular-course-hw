@@ -5,10 +5,10 @@
 
   z-index: 10;
   transition: all 0.3s ease;
-}
 
-.admin-menu-wrapper:hover {
-  right: 0;
+  &:hover {
+    right: 0;
+  }
 }
 
 :root {
@@ -27,19 +27,19 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
 
   z-index: 10;
-}
 
-.admin-panel__content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
-  justify-content: space-around;
-}
+    justify-content: space-around;
+  }
 
-.admin-panel__button {
-  width: 24px;
-  height: 24px;
+  &__button {
+    width: 24px;
+    height: 24px;
 
-  cursor: pointer;
+    cursor: pointer;
+  }
 }

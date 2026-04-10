@@ -5,15 +5,15 @@
 
   margin-bottom: 70px;
   gap: 11vw;
-}
 
-.hello-section__title {
-  margin-bottom: 25px;
-}
+  &__title {
+    margin-bottom: 25px;
+  }
 
-.hello-section__paragraph {
-  color: var(--color-gray-on-bright);
-  font-size: 20px;
+  &__paragraph {
+    color: var(--color-gray-on-bright);
+    font-size: 20px;
+  }
 }
 
 .blog {
