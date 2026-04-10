@@ -1,14 +1,12 @@
 @use "normalize";
 
-@use "vars";
-@use "header";
+@use "_vars";
 @use "about-me";
 @use "recently-posts";
 @use "skills";
 @use "job-experience";
 @use "timeline";
 @use "hobby";
-@use "footer";
 @use "form";
 @use "blog";
 @use "admin-panel";
@@ -138,4 +136,28 @@ a.button:hover {
   width: 1px;
   height: 1px;
   margin: -1px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.footer-container {
+  padding: 55px var(--page-padding);
+  background-color: var(--color-dark-bg);
+
+  margin-top: 65px;
+  position: relative;
+
+  z-index: 1;
+}
+
+[class$="--bouncing"]:hover {
+  transition: all 0.3s ease;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
 }
