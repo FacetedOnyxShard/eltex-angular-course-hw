@@ -1,65 +1,61 @@
-@use "./vars";
-
 :root {
   --header-padding: 10px;
 }
 
-.header {
-  &__content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    flex: 1;
-    padding: 0 var(--page-padding);
+  flex: 1;
+  padding: 0 var(--page-padding);
 
-    z-index: 3;
+  z-index: 3;
 
-    background-color: var(--color-bright-bg);
-  }
+  background-color: var(--color-bright-bg);
+}
 
-  &__company-sign {
-    font-size: var(--text-3xl);
-    font-weight: var(--font-medium);
-  }
+.header__company-sign {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-medium);
+}
 
-  &__nav {
-    display: flex;
-    gap: 22px;
-  }
+.header__nav {
+  display: flex;
+  gap: 22px;
+}
 
-  &__element {
-    font-size: var(--text-base);
-    color: var(--color-gray-on-bright);
-    position: relative;
-    display: inline-block;
+.header__element {
+  font-size: var(--text-base);
+  color: var(--color-gray-on-bright);
+  position: relative;
+  display: inline-block;
 
-    transition: all 0.3s ease;
-  }
+  transition: all 0.3s ease;
+}
 
-  &__element::before {
-    content: attr(data-text);
-    font-weight: bold;
-    display: block;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
-    user-select: none;
-    pointer-events: none;
-  }
+.header__element::before {
+  content: attr(data-text);
+  font-weight: bold;
+  display: block;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+}
 
-  &__element:hover {
-    font-weight: var(--font-bold);
-    color: var(--color-green-dark);
-  }
+.header__element:hover {
+  font-weight: var(--font-bold);
+  color: var(--color-green-dark);
+}
 
-  &__element--active {
-    font-weight: var(--font-bold);
-    color: var(--color-green-dark);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 5px;
-  }
+.header__element--active {
+  font-weight: var(--font-bold);
+  color: var(--color-green-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
 }
 
 .contact {
