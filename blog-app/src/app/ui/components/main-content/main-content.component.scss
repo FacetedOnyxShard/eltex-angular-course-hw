@@ -1,0 +1,39 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+  gap: 100px;
+}
+
+.main-content {
+  max-width: calc(100vw - var(--page-padding) * 2);
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.experience-text {
+  margin-bottom: 12px;
+}
+
+.article-creator {
+  width: 500px;
+  height: 250px;
+  gap: 14px;
+}
+
+.submit-button {
+  width: 100px;
+}
+
+.line-element {
+  height: 30px;
+}
+
+.visually-hidden {
+  visibility: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
