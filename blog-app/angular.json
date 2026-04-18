@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "baseHref": "/blog-app/",
+            "baseHref": "/eltex-angular-course-hw/",
             "outputPath": "dist/blog-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
