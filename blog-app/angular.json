@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "baseHref": "/blog-app/",
             "outputPath": "dist/blog-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -88,6 +89,13 @@
             ],
             "styles": ["src/styles.scss"],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "name": "Daniil",
+            "email": "i.am.daniil.rybkin@gmail.com"
           }
         }
       }

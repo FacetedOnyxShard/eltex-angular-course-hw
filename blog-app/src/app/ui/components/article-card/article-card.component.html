@@ -1,0 +1,19 @@
+<article class="card" [class.card--big]="isBig">
+  <img
+    class="card__delete-article-button"
+    src="assets/icons/delete.svg"
+    alt="Удалить"
+    (click)="onDeleteClick()"
+  />
+  <img [src]="article.image" alt="" class="card__image" />
+  <div class="card__text" [class.card__text--big]="isBig">
+    <h3 class="card__title">{{ article.title }}</h3>
+    <p class="card__paragraph" *ngIf="isBig">{{ article.content }}</p>
+    <time
+      class="card__publication-date"
+      [attr.datetime]="article.publicationDate.toISOString()"
+    >
+      Опубликовано: {{ formattedDate }}
+    </time>
+  </div>
+</article>

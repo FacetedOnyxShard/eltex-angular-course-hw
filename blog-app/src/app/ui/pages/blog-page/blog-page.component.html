@@ -1,0 +1,120 @@
+<section class="blog">
+  <section class="hello-section">
+    <div class="hello-section__text">
+      <h2 class="hello-section__title">My blogs</h2>
+      <p class="hello-section__paragraph">
+        Lorem occaecat proident excepteur commodo et nulla eiusmod. Elit esse
+        aute officia dolor elit aute
+      </p>
+    </div>
+    <img src="assets/images/text-circle-design-element.png" alt="" />
+  </section>
+
+  <div
+    class="loader-container"
+    [class.display-flex]="isLoading"
+    [class.display-none]="!isLoading"
+  >
+    <div class="loader"></div>
+  </div>
+
+  <section class="posts-section" [class.display-none]="isLoading">
+    <div class="placeholder-container" *ngIf="articles.length === 0">
+      <p class="placeholder__text">Нет статей</p>
+    </div>
+
+    <app-article-card
+      *ngIf="articles.length > 0"
+      [article]="articles[0]"
+      [isBig]="true"
+      (delete)="onDelete($event)"
+    >
+    </app-article-card>
+
+    <div class="blog__small-cards-container" *ngIf="articles.length > 1">
+      <app-article-card
+        *ngFor="let article of articles.slice(1)"
+        [article]="article"
+        (delete)="onDelete($event)"
+      >
+      </app-article-card>
+    </div>
+
+    <div class="button-container display-none">
+      <button class="blog__next-button blog__next-button--bouncing">
+        Next
+      </button>
+    </div>
+  </section>
+</section>
+
+<div class="admin-menu-wrapper">
+  <div class="admin-menu__trigger"></div>
+  <div class="admin-panel">
+    <div class="admin-panel__content">
+      <img
+        class="admin-panel__button"
+        src="assets/icons/post_add.svg"
+        alt=""
+        title="Добавить статью"
+        (click)="openFormDialog()"
+      />
+      <img
+        class="admin-panel__button"
+        src="assets/icons/stats.svg"
+        alt=""
+        title="Просмотр статистики"
+        (click)="openStatsDialog()"
+      />
+    </div>
+  </div>
+</div>
+
+<div
+  class="dialog-container"
+  [class.show-dialog]="showFormDialog"
+  (click)="onDialogBackdropClick($event, 'form')"
+>
+  <div class="dialog">
+    <img
+      class="dialog__close-button"
+      src="assets/icons/icons8-крестик-78.png"
+      alt="Закрыть"
+      (click)="closeFormDialog()"
+    />
+    <div class="dialog__content">
+      <app-article-form
+        (submit)="onArticleAdded($event)"
+        (cancel)="closeFormDialog()"
+      ></app-article-form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="stats-dialog-container"
+  [class.show-dialog]="showStatsDialog"
+  (click)="onDialogBackdropClick($event, 'stats')"
+>
+  <div class="stats-dialog">
+    <img
+      class="stats-dialog__close-button"
+      src="assets/icons/icons8-крестик-78.png"
+      alt="Закрыть"
+      (click)="closeStatsDialog()"
+    />
+    <h3 class="stats-dialog__header">Статистика страницы</h3>
+    <div class="stats-dialog__content">
+      <div class="stats-dialog__metrics">
+        <div class="metric-section">
+          <h4 class="metric-section__title">Всего статей:</h4>
+          <p class="metric-section__metric">{{ getArticlesCount() }}</p>
+        </div>
+        <div class="metric-section">
+          <h4 class="metric-section__title">Комментарии:</h4>
+          <p class="metric-section__metric">0</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
