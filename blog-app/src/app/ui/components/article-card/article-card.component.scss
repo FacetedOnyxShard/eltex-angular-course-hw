@@ -1,0 +1,66 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__delete-article-button {
+    display: none;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  &:hover .card__delete-article-button {
+    display: inline-flex;
+  }
+
+  &__delete-article-button:hover {
+    filter: brightness(0.8);
+  }
+
+  &--big {
+    flex-direction: row;
+    gap: 50px;
+    background-color: #fafafa;
+    border-radius: 8px;
+  }
+
+  &__image {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+
+    &--big {
+      width: 100%;
+      height: auto;
+      padding-right: 30px;
+      padding-bottom: 30px;
+      flex: 1;
+    }
+  }
+
+  &__title {
+    margin-top: 8px;
+    margin-bottom: 20px;
+  }
+
+  &__paragraph {
+    margin-bottom: 16px;
+  }
+
+  &__publication-date {
+    font-size: 16px;
+  }
+}

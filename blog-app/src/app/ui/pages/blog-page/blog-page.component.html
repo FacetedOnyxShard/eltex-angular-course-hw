@@ -7,85 +7,37 @@
         aute officia dolor elit aute
       </p>
     </div>
-    <img src="src/assets/images/text-circle-design-element.png" alt="" />
+    <img src="assets/images/text-circle-design-element.png" alt="" />
   </section>
 
-  <div class="loader-container display-flex" id="posts-section__loader">
+  <div
+    class="loader-container"
+    [class.display-flex]="isLoading"
+    [class.display-none]="!isLoading"
+  >
     <div class="loader"></div>
   </div>
 
-  <section class="posts-section" id="posts-section">
-    <div class="placeholder-container" id="article-placeholder">
+  <section class="posts-section" [class.display-none]="isLoading">
+    <div class="placeholder-container" *ngIf="articles.length === 0">
       <p class="placeholder__text">Нет статей</p>
     </div>
 
-    <template id="first-article-template">
-      <article class="card card--big" id="first-article">
-        <img
-          class="card__delete-article-button"
-          id="first-article__delete-article-button"
-          src="src/assets/icons/delete.svg"
-          alt=""
-        />
+    <app-article-card
+      *ngIf="articles.length > 0"
+      [article]="articles[0]"
+      [isBig]="true"
+      (delete)="onDelete($event)"
+    >
+    </app-article-card>
 
-        <img
-          src="src/assets/images/empty-picture.png"
-          alt=""
-          class="card__image"
-          id="first-article__image"
-        />
-
-        <div class="card__text card__text--big" id="first-article">
-          <header>
-            <h3 class="card__title" id="first-article__title">
-              Как создать адаптивный дизайн за 30 минут
-            </h3>
-          </header>
-          <p class="card__paragraph" id="first-article__content">
-            В этой статье я расскажу о ключевых принципах создания мобильных
-            интерфейсов, которые одинаково хорошо выглядят на всех устройствах.
-            Вы узнаете о медиа-запросах, гибких сетках и практических примерах
-            кода, которые можно использовать прямо сейчас.
-          </p>
-          <time
-            class="card__publication-date"
-            datetime="2024-12-15"
-            id="first-article__date"
-            >Опубликовано: 15 декабря 2024</time
-          >
-        </div>
-      </article>
-    </template>
-
-    <div id="blog__small-cards-placeholder" class="blog__small-cards-container">
-      <template id="small-card-template">
-        <article class="card card--small">
-          <img
-            class="card__delete-article-button"
-            id="small-cards__delete-article-button"
-            src="src/assets/icons/delete.svg"
-            alt=""
-          />
-
-          <img
-            src="src/assets/images/empty-picture.png"
-            alt=""
-            class="card__image"
-          />
-
-          <div class="card__text">
-            <h4 class="card__title" id="small-card-template__title">
-              Minim anim pariatur magna duis sit et dolor incididunt
-            </h4>
-            <time
-              class="card__date"
-              datetime="2024-12-15"
-              id="small-card-template__date"
-              >Опубликовано: 15 декабря 2024</time
-            >
-          </div>
-        </article>
-      </template>
+    <div class="blog__small-cards-container" *ngIf="articles.length > 1">
+      <app-article-card
+        *ngFor="let article of articles.slice(1)"
+        [article]="article"
+        (delete)="onDelete($event)"
+      >
+      </app-article-card>
     </div>
 
     <div class="button-container display-none">
@@ -98,64 +50,67 @@
 
 <div class="admin-menu-wrapper">
   <div class="admin-menu__trigger"></div>
-
   <div class="admin-panel">
     <div class="admin-panel__content">
       <img
-        id="open-button-for-add-post"
         class="admin-panel__button"
-        src="src/assets/icons/post_add.svg"
+        src="assets/icons/post_add.svg"
         alt=""
         title="Добавить статью"
+        (click)="openFormDialog()"
       />
       <img
-        id="open-button-for-stats"
         class="admin-panel__button"
-        src="src/assets/icons/stats.svg"
+        src="assets/icons/stats.svg"
         alt=""
         title="Просмотр статистики"
+        (click)="openStatsDialog()"
       />
     </div>
   </div>
 </div>
 
-<!-- для добавления статей -->
-<div id="dialog-container" class="dialog-container">
+<div
+  class="dialog-container"
+  [class.show-dialog]="showFormDialog"
+  (click)="onDialogBackdropClick($event, 'form')"
+>
   <div class="dialog">
     <img
-      id="close-button-for-dialog"
       class="dialog__close-button"
-      src="src/assets/icons/icons8-крестик-78.png"
-      alt=""
+      src="assets/icons/icons8-крестик-78.png"
+      alt="Закрыть"
+      (click)="closeFormDialog()"
     />
-
-    <div
-      class="loader-container display-none"
-      id="dialog-for-add-posts__loader"
-    >
-      <div class="loader"></div>
-    </div>
-
-    <div class="dialog__content" id="dialog-for-add-posts__content">
-      <div id="form-bright-placeholder"></div>
+    <div class="dialog__content">
+      <app-article-form
+        (submit)="onArticleAdded($event)"
+        (cancel)="closeFormDialog()"
+      ></app-article-form>
     </div>
   </div>
 </div>
 
-<!-- для статистики -->
-<div id="stats-dialog-container" class="stats-dialog-container">
+<div
+  class="stats-dialog-container"
+  [class.show-dialog]="showStatsDialog"
+  (click)="onDialogBackdropClick($event, 'stats')"
+>
   <div class="stats-dialog">
     <img
-      id="close-button-for-stats-dialog"
       class="stats-dialog__close-button"
-      src="src/assets/icons/icons8-крестик-78.png"
-      alt=""
+      src="assets/icons/icons8-крестик-78.png"
+      alt="Закрыть"
+      (click)="closeStatsDialog()"
     />
     <h3 class="stats-dialog__header">Статистика страницы</h3>
     <div class="stats-dialog__content">
       <div class="stats-dialog__metrics">
-        <div class="metric-section" id="posts-count"></div>
-        <div class="metric-section" id="comments-count">
+        <div class="metric-section">
+          <h4 class="metric-section__title">Всего статей:</h4>
+          <p class="metric-section__metric">{{ getArticlesCount() }}</p>
+        </div>
+        <div class="metric-section">
           <h4 class="metric-section__title">Комментарии:</h4>
           <p class="metric-section__metric">0</p>
         </div>
