@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Article } from '../../../services/article.service';
+import { Article } from '../../../types/article.types';
 
 @Component({
   selector: 'app-article-form',

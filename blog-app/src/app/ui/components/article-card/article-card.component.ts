@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Article } from '../../../services/article.service';
+import { Article } from '../../../types/article.types';
 
 @Component({
   selector: 'app-article-card',

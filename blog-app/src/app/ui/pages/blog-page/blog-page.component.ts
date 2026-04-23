@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticleService, Article } from '../../../services/article.service';
+import { Article } from '../../../types/article.types';
+import { ArticleService } from '../../../services/article.service';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { ArticleFormComponent } from '../../components/article-form/article-form.component';
 
@@ -82,5 +83,9 @@ export class BlogPageComponent implements OnInit {
         this.closeStatsDialog();
       }
     }
+  }
+
+  get reversedView() {
+    return [...this.articles].reverse();
   }
 }
