@@ -1,6 +1,8 @@
 <form [formGroup]="articleForm" class="form" id="form--bright">
   <div>
-    <h3 class="form__header">Добавить статью</h3>
+    <h3 class="form__header">
+      {{ isEditMode ? "Редактировать статью" : "Добавить статью" }}
+    </h3>
 
     <fieldset [disabled]="isSubmitting" class="fieldset">
       <div class="form__element">

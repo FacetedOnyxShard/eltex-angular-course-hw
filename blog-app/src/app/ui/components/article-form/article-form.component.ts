@@ -1,4 +1,11 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Output,
+  Input,
+  EventEmitter,
+  SimpleChange,
+  SimpleChanges,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -18,15 +25,55 @@ import { Article } from '../../../types/article.types';
 export class ArticleFormComponent {
   @Output() submit = new EventEmitter<Article>();
   @Output() cancel = new EventEmitter<void>();
+  @Output() update = new EventEmitter<Article>();
+
+  @Input() articleToEdit: Article | null = null;
 
   articleForm: FormGroup;
   isSubmitting: boolean = false;
+  isEditMode: boolean = false;
 
   constructor(private fb: FormBuilder) {
     this.articleForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       content: ['', [Validators.required, Validators.minLength(10)]],
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['articleToEdit'] && this.articleToEdit) {
+      this.isEditMode = true;
+      this.articleForm.patchValue({
+        title: this.articleToEdit.title,
+        content: this.articleToEdit.content,
+      });
+    } else if (changes['articleToEdit'] && !this.articleToEdit) {
+      this.isEditMode = false;
+      this.articleForm.reset();
+    }
+  }
+
+  async addArticleLogic() {
+    const newArticle: Article = {
+      id: crypto.randomUUID(),
+      image: 'assets/images/empty-picture.png',
+      title: this.articleForm.value.title.trim(),
+      content: this.articleForm.value.content.trim(),
+      publicationDate: new Date(),
+    };
+    this.submit.emit(newArticle);
+  }
+
+  async updateArticleLogic() {
+    if (this.articleToEdit !== null) {
+      const updatedArticle: Article = {
+        ...this.articleToEdit,
+        title: this.articleForm.value.title.trim(),
+        content: this.articleForm.value.content.trim(),
+        publicationDate: new Date(),
+      };
+      this.update.emit(updatedArticle);
+    }
   }
 
   async onSubmit(): Promise<void> {
@@ -39,20 +86,17 @@ export class ArticleFormComponent {
     }
 
     this.isSubmitting = true;
-
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    const newArticle: Article = {
-      id: crypto.randomUUID(),
-      image: 'assets/images/empty-picture.png',
-      title: this.articleForm.value.title.trim(),
-      content: this.articleForm.value.content.trim(),
-      publicationDate: new Date(),
-    };
+    if (this.isEditMode && this.articleToEdit) {
+      this.updateArticleLogic();
+    } else {
+      this.addArticleLogic();
+    }
 
-    this.submit.emit(newArticle);
     this.articleForm.reset();
     this.isSubmitting = false;
+    this.isEditMode = false;
   }
 
   onCancel(): void {

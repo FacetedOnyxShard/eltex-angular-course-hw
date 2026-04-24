@@ -18,6 +18,8 @@ export class BlogPageComponent implements OnInit {
   showFormDialog: boolean = false;
   showStatsDialog: boolean = false;
 
+  editingArticle: Article | null = null;
+
   constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {
@@ -48,19 +50,39 @@ export class BlogPageComponent implements OnInit {
     this.articles = this.articleService.getArticles();
   }
 
+  onEdit(articleId: string): void {
+    const article = this.articles.find((a) => a.id === articleId);
+    if (article) {
+      this.openFormDialog(article);
+    }
+  }
+
   onArticleAdded(article: Article): void {
     this.articleService.addArticle(article);
     this.articles = this.articleService.getArticles();
     this.showFormDialog = false;
   }
 
-  openFormDialog(): void {
+  onArticleUpdated(updatedArticle: Article) {
+    this.articleService.updateArticle(updatedArticle);
+    this.articles = this.articleService.getArticles();
+    this.closeFormDialog();
+  }
+
+  openFormDialog(articleToEdit?: Article): void {
     this.showStatsDialog = false;
     this.showFormDialog = true;
+
+    if (articleToEdit) {
+      this.editingArticle = articleToEdit;
+    } else {
+      this.editingArticle = null;
+    }
   }
 
   closeFormDialog(): void {
     this.showFormDialog = false;
+    this.editingArticle = null;
   }
 
   openStatsDialog(): void {

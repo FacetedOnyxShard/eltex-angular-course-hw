@@ -24,13 +24,18 @@
         [article]="reversedView[0]"
         [isBig]="true"
         (delete)="onDelete($event)"
+        (edit)="onEdit($event)"
       >
       </app-article-card>
     }
     @if (articles.length > 1) {
       <div class="blog__small-cards-container">
         @for (article of reversedView.slice(1); track article.id) {
-          <app-article-card [article]="article" (delete)="onDelete($event)">
+          <app-article-card
+            [article]="article"
+            (delete)="onDelete($event)"
+            (edit)="onEdit($event)"
+          >
           </app-article-card>
         }
       </div>
@@ -85,8 +90,10 @@
     />
     <div class="dialog__content">
       <app-article-form
+        [articleToEdit]="editingArticle"
         (submit)="onArticleAdded($event)"
         (cancel)="closeFormDialog()"
+        (update)="onArticleUpdated($event)"
       ></app-article-form>
     </div>
   </div>

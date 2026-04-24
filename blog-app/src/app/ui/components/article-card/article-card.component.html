@@ -5,10 +5,18 @@
     alt="Удалить"
     (click)="onDeleteClick()"
   />
+  <img
+    class="card__edit-article-button"
+    src="assets/icons/icons8-редактировать.svg"
+    alt="Редактировать"
+    (click)="onEditClick()"
+  />
   <img [src]="article.image" alt="" class="card__image" />
   <div class="card__text" [class.card__text--big]="isBig">
     <h3 class="card__title">{{ article.title }}</h3>
-    <p class="card__paragraph" *ngIf="isBig">{{ article.content }}</p>
+    @if (isBig) {
+      <p class="card__paragraph">{{ article.content }}</p>
+    }
     <time
       class="card__publication-date"
       [attr.datetime]="article.publicationDate.toISOString()"
