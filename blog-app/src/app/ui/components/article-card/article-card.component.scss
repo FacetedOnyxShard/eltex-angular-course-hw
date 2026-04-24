@@ -1,3 +1,7 @@
+$right-bias: 10px;
+$icon-width: 24px;
+$icons-gap: 5px;
+
 .card {
   display: flex;
   flex-direction: column;
@@ -5,19 +9,33 @@
 
   &__delete-article-button {
     display: none;
-    width: 24px;
+    width: $icon-width;
     height: 24px;
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
   }
-
   &:hover .card__delete-article-button {
     display: inline-flex;
   }
-
   &__delete-article-button:hover {
+    filter: brightness(0.8);
+  }
+
+  &__edit-article-button {
+    display: none;
+    width: $icon-width;
+    height: 24px;
+    position: absolute;
+    top: 10px;
+    right: $right-bias + $icon-width + $icons-gap;
+    cursor: pointer;
+  }
+  &:hover .card__edit-article-button {
+    display: inline-flex;
+  }
+  &__edit-article-button:hover {
     filter: brightness(0.8);
   }
 

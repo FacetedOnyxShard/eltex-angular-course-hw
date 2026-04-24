@@ -19,26 +19,32 @@
   </div>
 
   <section class="posts-section" [class.display-none]="isLoading">
-    <div class="placeholder-container" *ngIf="articles.length === 0">
-      <p class="placeholder__text">Нет статей</p>
-    </div>
-
-    <app-article-card
-      *ngIf="articles.length > 0"
-      [article]="articles[0]"
-      [isBig]="true"
-      (delete)="onDelete($event)"
-    >
-    </app-article-card>
-
-    <div class="blog__small-cards-container" *ngIf="articles.length > 1">
+    @if (articles.length > 0) {
       <app-article-card
-        *ngFor="let article of articles.slice(1)"
-        [article]="article"
+        [article]="reversedView[0]"
+        [isBig]="true"
         (delete)="onDelete($event)"
+        (edit)="onEdit($event)"
       >
       </app-article-card>
-    </div>
+    }
+    @if (articles.length > 1) {
+      <div class="blog__small-cards-container">
+        @for (article of reversedView.slice(1); track article.id) {
+          <app-article-card
+            [article]="article"
+            (delete)="onDelete($event)"
+            (edit)="onEdit($event)"
+          >
+          </app-article-card>
+        }
+      </div>
+    }
+    @if (articles.length == 0) {
+      <div class="placeholder-container">
+        <p class="placeholder__text">Нет статей</p>
+      </div>
+    }
 
     <div class="button-container display-none">
       <button class="blog__next-button blog__next-button--bouncing">
@@ -84,8 +90,10 @@
     />
     <div class="dialog__content">
       <app-article-form
+        [articleToEdit]="editingArticle"
         (submit)="onArticleAdded($event)"
         (cancel)="closeFormDialog()"
+        (update)="onArticleUpdated($event)"
       ></app-article-form>
     </div>
   </div>

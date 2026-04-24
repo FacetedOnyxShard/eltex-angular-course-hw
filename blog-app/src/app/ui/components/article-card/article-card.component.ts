@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Article } from '../../../services/article.service';
+import { Article } from '../../../types/article.types';
 
 @Component({
   selector: 'app-article-card',
@@ -14,6 +14,7 @@ export class ArticleCardComponent {
   @Input() isBig: boolean = false;
 
   @Output() delete = new EventEmitter<string>();
+  @Output() edit = new EventEmitter<string>();
 
   get formattedDate(): string {
     const date = this.article.publicationDate;
@@ -39,5 +40,9 @@ export class ArticleCardComponent {
 
   onDeleteClick(): void {
     this.delete.emit(this.article.id);
+  }
+
+  onEditClick(): void {
+    this.edit.emit(this.article.id);
   }
 }

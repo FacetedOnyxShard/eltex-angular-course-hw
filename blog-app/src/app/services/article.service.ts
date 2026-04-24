@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Article {
-  id: string;
-  title: string;
-  content: string;
-  image: string;
-  publicationDate: Date;
-}
+import { Article } from '../types/article.types';
 
 @Injectable({
   providedIn: 'root',

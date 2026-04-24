@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticleService, Article } from '../../../services/article.service';
+import { Article } from '../../../types/article.types';
+import { ArticleService } from '../../../services/article.service';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { ArticleFormComponent } from '../../components/article-form/article-form.component';
 
@@ -16,6 +17,8 @@ export class BlogPageComponent implements OnInit {
   isLoading: boolean = true;
   showFormDialog: boolean = false;
   showStatsDialog: boolean = false;
+
+  editingArticle: Article | null = null;
 
   constructor(private articleService: ArticleService) {}
 
@@ -47,19 +50,39 @@ export class BlogPageComponent implements OnInit {
     this.articles = this.articleService.getArticles();
   }
 
+  onEdit(articleId: string): void {
+    const article = this.articles.find((a) => a.id === articleId);
+    if (article) {
+      this.openFormDialog(article);
+    }
+  }
+
   onArticleAdded(article: Article): void {
     this.articleService.addArticle(article);
     this.articles = this.articleService.getArticles();
     this.showFormDialog = false;
   }
 
-  openFormDialog(): void {
+  onArticleUpdated(updatedArticle: Article) {
+    this.articleService.updateArticle(updatedArticle);
+    this.articles = this.articleService.getArticles();
+    this.closeFormDialog();
+  }
+
+  openFormDialog(articleToEdit?: Article): void {
     this.showStatsDialog = false;
     this.showFormDialog = true;
+
+    if (articleToEdit) {
+      this.editingArticle = articleToEdit;
+    } else {
+      this.editingArticle = null;
+    }
   }
 
   closeFormDialog(): void {
     this.showFormDialog = false;
+    this.editingArticle = null;
   }
 
   openStatsDialog(): void {
@@ -82,5 +105,9 @@ export class BlogPageComponent implements OnInit {
         this.closeStatsDialog();
       }
     }
+  }
+
+  get reversedView() {
+    return [...this.articles].reverse();
   }
 }
