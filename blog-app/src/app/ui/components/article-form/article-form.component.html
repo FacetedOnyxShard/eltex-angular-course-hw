@@ -1,7 +1,7 @@
 <form [formGroup]="articleForm" class="form" id="form--bright">
   <div>
     <h3 class="form__header">
-      {{ isEditMode ? "Редактировать статью" : "Добавить статью" }}
+      {{ isEditMode ? "Изменить статью" : "Добавить статью" }}
     </h3>
 
     <fieldset [disabled]="isSubmitting" class="fieldset">
@@ -19,13 +19,13 @@
         />
         <div
           class="form__error"
-          *ngIf="titleControl?.invalid && titleControl?.touched"
+          [hidden]="!(titleControl?.invalid && titleControl?.touched)"
         >
-          <span *ngIf="titleControl?.errors?.['required']"
+          <span [hidden]="!titleControl?.errors?.['required']"
             >Заголовок обязателен</span
           >
-          <span *ngIf="titleControl?.errors?.['minlength']"
-            >Минимум 3 символа</span
+          <span [hidden]="!titleControl?.errors?.['minlength']"
+            >Минимум 25 символов</span
           >
         </div>
       </div>
@@ -43,13 +43,13 @@
         ></textarea>
         <div
           class="form__error"
-          *ngIf="contentControl?.invalid && contentControl?.touched"
+          [hidden]="!(contentControl?.invalid && contentControl?.touched)"
         >
-          <span *ngIf="contentControl?.errors?.['required']"
+          <span [hidden]="!contentControl?.errors?.['required']"
             >Текст статьи обязателен</span
           >
-          <span *ngIf="contentControl?.errors?.['minlength']"
-            >Минимум 10 символов</span
+          <span [hidden]="!contentControl?.errors?.['minlength']"
+            >Минимум 25 символов</span
           >
         </div>
       </div>
@@ -62,9 +62,21 @@
       class="form__submit-button form__submit-button--bouncing"
       [class.form__submit-button--loading]="isSubmitting"
       [disabled]="isSubmitting"
+      [disabled]="
+        (titleControl?.invalid && titleControl?.touched) ||
+        (contentControl?.invalid && contentControl?.touched)
+      "
       (click)="onSubmit()"
     >
-      {{ isSubmitting ? "Добавление..." : "Добавить" }}
+      {{
+        isEditMode
+          ? isSubmitting
+            ? "Сохранение..."
+            : "Сохранить"
+          : isSubmitting
+            ? "Добавление..."
+            : "Добавить"
+      }}
     </button>
     <button
       type="button"

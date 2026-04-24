@@ -35,8 +35,8 @@ export class ArticleFormComponent {
 
   constructor(private fb: FormBuilder) {
     this.articleForm = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(3)]],
-      content: ['', [Validators.required, Validators.minLength(10)]],
+      title: ['', [Validators.required, Validators.minLength(25)]],
+      content: ['', [Validators.required, Validators.minLength(25)]],
     });
   }
 
